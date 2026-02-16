@@ -1,12 +1,15 @@
 import pandas as pd
 import numpy as np
 import random
-from psychopy import visual, core, event
+from psychopy import visual, core, event, gui, monitors
 
 """
 Setting Variables
 """
-
+MON_DISTANCE = 60  # Distance between subject's eyes and monitor 
+MON_WIDTH = 40  # Width of your monitor in cm
+MON_SIZE = [1920, 1080]  # Pixel-dimensions of your monitor
+FRAME_RATE=60 # Hz
 SAVE_FOLDER = 'EEG_data'
 
 """
@@ -18,6 +21,20 @@ Getting participant info
 V= {'ID':'','age':'','gender':['female','male','other']}
 if not gui.DlgFromDict(V, order=['ID','age','gender']).OK: # dialog box; order is a list of keys 
     core.quit()
+"""
+Monitor stuff
+"""
+
+my_monitor = monitors.Monitor('testMonitor', width=MON_WIDTH, distance=MON_DISTANCE)  # Create monitor object from the variables above. This is needed to control size of stimuli in degrees.
+my_monitor.setSizePix(MON_SIZE)
+
+# Use your MON_SIZE variable here
+win = visual.Window(
+    fullscr=True,       # You requested fullscreen
+    monitor=my_monitor, # Use the monitor object you created
+    units='deg',         # Or 'pix', 'cm', etc.
+    color='black'
+)
 
 """
 Specifying time and monitor
@@ -25,16 +42,15 @@ Specifying time and monitor
 
 stopwatch = core.Clock()
 
-win = visual.Window(monitor=my_monitor, units='deg', fullscr=True, allowGUI=False, color='black')
 
 stim_fix = visual.TextStim(win, '+')
 """
 Stimuli section
 """
 import os
-os.chdir("C:\Users\asger\OneDrive\Dokumenter\AUdocuments\Cognitive Neuroscience\EEG_experiment") #double checking we're in the correct directory
+os.chdir(r"C:\Users\asger\OneDrive\Dokumenter\GitHub\eeg_project") #double checking we're in the correct directory
 
-wordlist=pd.read_csv('wordlist.txt', sep='\t')
+wordlist=pd.read_csv('word_dataset.csv' )
 
 #function for displaying text
 def dis_txt(text_to_display):
@@ -46,7 +62,6 @@ def dis_txt(text_to_display):
 def experiment(wordlist_df):
     # --- 1. Setup ---
     results = [] 
-    ID = random.randrange(1000)
     
     # Define the questions for each condition
     condition_labels = {
@@ -84,18 +99,28 @@ def experiment(wordlist_df):
         stopwatch.reset()
         
         # E. Wait for user response
-        keys = event.waitKeys(keyList=["y","n", "escape"])
-        # F. Record Reaction Time and trial info
+        keys = event.waitKeys(keyList=["y", "n", "escape"])
         rt = stopwatch.getTime()
         
-        # Emergency exit
+        if not keys: continue
+        pressed_key = keys[0]
+
+        # Emergency exit - Move this ABOVE the results.append
         if pressed_key == 'escape':
             print("Experiment quit by user.")
             break
-            
         
+        #creating the fixation cross for 3 seconds until proceeding with the next word
+        win.flip()
+        stim_fix.draw()
+        win.flip()
+        core.wait(3.0)
+        
+        # F. Record Data (Fixes the Case Sensitivity)
         results.append({
-            "ID": ID,
+            "ID": V['ID'],         
+            "Age": V['age'],       
+            "Gender": V['gender'],
             "Condition_ID": condition,
             "Condition_Prompt": task_text,
             "Word": current_word,
@@ -104,8 +129,6 @@ def experiment(wordlist_df):
         })
         
         # Brief blank screen (Inter-Stimulus Interval) to clear the eyes
-        dis_txt("") 
-        core.wait(0.2)
 
     # --- 3. Wrap Up ---
     if results:
@@ -116,6 +139,52 @@ def experiment(wordlist_df):
         print("No data collected.")
         return pd.DataFrame()
 
+# Create the stimulus once at the top of your script
+# wrapWidth=30 is a good starting point for 'deg' units to keep text centered
+intro_stim = visual.TextStim(win, text="", color="white", height=0.6, wrapWidth=30)
 
+def show_intro(text_list):
+    # Join the list into a single string with double line breaks
+    formatted_text = "\n\n".join(text_list)
+    
+    # Update the stimulus and draw
+    intro_stim.text = formatted_text
+    intro_stim.draw()
+    win.flip()
+    
+    # Wait for the user to press 't' to start
+    event.waitKeys(keyList=['t'])
+
+# Define your text list
+introText1 = [
+    u'The experiment contains 2 conditions:',
+    u'1. Includes "A": Press “Y” if the word contains A, “N” if not.',
+    u'2. Living?: Press “Y” if it is a living thing, “N” if not.',
+    u'Press "T" to begin. The experiment starts 5 seconds after.'
+]
+
+# --- 1. Display the Intro and Wait for 'T' ---
+show_intro(introText1)
+
+# --- 2. The 5-second countdown wait ---
+# Clear text and show fixation
+stim_fix.draw()
+win.flip()
+core.wait(5.0)
+
+# 1. Run the experiment and capture the data
+final_data = experiment(wordlist)
+
+# 2. Save the data (using the ID from your GUI)
+if not final_data.empty:
+    filename = f"data_p{V['ID']}.csv"
+    final_data.to_csv(filename, index=False)
+    print(f"Data saved as {filename}")
+
+# 3. Clean up
 win.close()
 core.quit()
+
+
+
+
