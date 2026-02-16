@@ -50,7 +50,12 @@ Stimuli section
 import os
 os.chdir(r"C:\Users\asger\OneDrive\Dokumenter\GitHub\eeg_project") #double checking we're in the correct directory
 
-wordlist=pd.read_csv('word_dataset.csv' )
+# Load with semicolon
+wordlist = pd.read_csv('word_dataset.csv', sep=';')
+# Remove spaces from column names
+wordlist.columns = wordlist.columns.str.strip()
+# FORCE the condition column to be integers
+wordlist['condition'] = pd.to_numeric(wordlist['condition'], errors='coerce')
 
 #function for displaying text
 def dis_txt(text_to_display):
