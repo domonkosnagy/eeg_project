@@ -48,7 +48,7 @@ stim_fix = visual.TextStim(win, '+')
 Stimuli section
 """
 import os
-os.chdir(r"C:\Users\asger\OneDrive\Dokumenter\GitHub\eeg_project") #double checking we're in the correct directory
+os.chdir("/Users/nagydomonkos/Desktop/neuroscience/4/eeg_project") #double checking we're in the correct directory
 
 # Load with semicolon
 wordlist = pd.read_csv('word_dataset.csv', sep=';')
@@ -181,10 +181,19 @@ core.wait(5.0)
 final_data = experiment(wordlist)
 
 # 2. Save the data (using the ID from your GUI)
+
 if not final_data.empty:
+
+    # Create EEG_data folder if it does not exist
+    if not os.path.exists(SAVE_FOLDER):
+        os.makedirs(SAVE_FOLDER)
+
     filename = f"data_p{V['ID']}.csv"
-    final_data.to_csv(filename, index=False)
-    print(f"Data saved as {filename}")
+    full_path = os.path.join(SAVE_FOLDER, filename)
+
+    final_data.to_csv(full_path, index=False)
+
+    print(f"Data saved to: {full_path}")
 
 # 3. Clean up
 win.close()
