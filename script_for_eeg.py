@@ -10,92 +10,97 @@ Setting Variables
 MON_DISTANCE = 60  # Distance between subject's eyes and monitor 
 MON_WIDTH = 40  # Width of your monitor in cm
 MON_SIZE = [1920, 1080]  # Pixel-dimensions of your monitor
-FRAME_RATE=60 # Hz
+FRAME_RATE = 60  # Hz
 SAVE_FOLDER = 'EEG_data'
+
+# ─── TRIGGER CODES ────────────────────────────────────────────────────────────
+TRIG_FIXATION   = 255
+TRIG_COND1_LABEL = 2   # "Includes A?" onset
+TRIG_COND2_LABEL = 3   # "Living?" onset
+TRIG_COND1_WORD  = 20   # Word onset, condition 1
+TRIG_COND2_WORD  = 30   # Word onset, condition 2
+TRIG_RESP_Y     = 1
+TRIG_RESP_N     = 0
+# ──────────────────────────────────────────────────────────────────────────────
 
 """
 Getting participant info
 """
-
-# Intro-dialogue. Get subject-id and other variables.
-# Save input variables in "V" dictionary (V for "variables")
-V= {'ID':'','age':'','gender':['female','male','other']}
-if not gui.DlgFromDict(V, order=['ID','age','gender']).OK: # dialog box; order is a list of keys 
+V = {'ID': '', 'age': '', 'gender': ['female', 'male', 'other']}
+if not gui.DlgFromDict(V, order=['ID', 'age', 'gender']).OK:
     core.quit()
+
 """
 Monitor stuff
 """
-
-my_monitor = monitors.Monitor('testMonitor', width=MON_WIDTH, distance=MON_DISTANCE)  # Create monitor object from the variables above. This is needed to control size of stimuli in degrees.
+my_monitor = monitors.Monitor('testMonitor', width=MON_WIDTH, distance=MON_DISTANCE)
 my_monitor.setSizePix(MON_SIZE)
 
-# Use your MON_SIZE variable here
 win = visual.Window(
-    fullscr=True,       # You requested fullscreen
-    monitor=my_monitor, # Use the monitor object you created
-    units='deg',         # Or 'pix', 'cm', etc.
+    fullscr=True,
+    monitor=my_monitor,
+    units='deg',
     color='black'
 )
 
 """
 Specifying time and monitor
 """
-
 stopwatch = core.Clock()
 
-
 stim_fix = visual.TextStim(win, '+')
+
 """
 Stimuli section
 """
 import os
-os.chdir(r"C:\Users\asger\OneDrive\Dokumenter\GitHub\eeg_project") #double checking we're in the correct directory
+os.chdir("/Users/nagydomonkos/Desktop/neuroscience/4/eeg_project")
 
-# Load with semicolon
 wordlist = pd.read_csv('word_dataset.csv', sep=';')
-# Remove spaces from column names
 wordlist.columns = wordlist.columns.str.strip()
-# FORCE the condition column to be integers
 wordlist['condition'] = pd.to_numeric(wordlist['condition'], errors='coerce')
 
-#function for displaying text
+
 def dis_txt(text_to_display):
-    #Creates message, draws it and flips the window
-    mes = visual.TextStim(win,text_to_display,color="white")
+    mes = visual.TextStim(win, text_to_display, color="white")
     mes.draw(win)
     win.flip()
-    
+
+
+def send_trigger(code):
+    """Send a trigger code and immediately schedule a reset to 0 on the next flip."""
+    setParallelData(code)
+
+
 def experiment(wordlist_df):
     # --- 1. Setup ---
-    results = [] 
-    
-    # Define the questions for each condition
+    results = []
+
     condition_labels = {
         1: "Includes 'A'?",
         2: "Living?"
     }
-    
-    # 15-minute timer (900 seconds)
+
     experiment_timer = core.CountdownTimer(15 * 60)
-    
-    # avoiding repetition
     used_indices = set()
-    
+
     # --- 2. The Main Loop ---
     while experiment_timer.getTime() > 0:
-        
-        # A. Randomly choose Condition (1 or 2)
+
+        # ── A. Randomly choose Condition ──────────────────────────────────────
         condition = random.choice([1, 2])
         task_text = condition_labels[condition]
-        
-        # B. Display the task text (Condition Label) for 1.5 seconds
-        #trigger here
-        dis_txt(task_text)
-        core.wait(1.5)
-        
-        # C. Filter wordlist by condition and pick a random word
-        # Note: This assumes your CSV has a column named 'condition'
-        # Filter by condition AND remove already-used words
+
+        # ── B. TRIGGER 2 — Condition label onset ──────────────────────────────
+        cond_stim = visual.TextStim(win, task_text, color="white")
+        cond_trigger = TRIG_COND1_LABEL if condition == 1 else TRIG_COND2_LABEL
+        cond_stim.draw()
+        win.callOnFlip(setParallelData, cond_trigger)
+        win.flip()
+        setParallelData(0)        # reset trigger line
+        core.wait(1.5)        
+
+        # ── C. Filter wordlist ────────────────────────────────────────────────
         sub_list = wordlist_df[
             (wordlist_df['condition'] == condition) &
             (~wordlist_df.index.isin(used_indices))
@@ -107,58 +112,50 @@ def experiment(wordlist_df):
 
         random_row = sub_list.sample(n=1).iloc[0]
         current_word = random_row['word']
-
-        # Mark word as used
         used_indices.add(random_row.name)
-        
-        # D. Display stimulus word and start timing
-        dis_txt(current_word)
-        stopwatch.reset()
-        
-            if frame == 1:   
-                win.callOnFlip(setParallelData, trigger)
-                pullTriggerDown = True  
-                
-            elif pullTriggerDown: 
-                win.callOnFlip(setParallelData, 0) 
-                pullTriggerDown = False
 
-        # E. Wait for user response
+        # ── D. TRIGGER 3 — Stimulus word onset ────────────────────────────────
+        word_stim = visual.TextStim(win, current_word, color="white")
+        word_trigger = TRIG_COND1_WORD if condition == 1 else TRIG_COND2_WORD
+        word_stim.draw()
+        win.callOnFlip(setParallelData, word_trigger)
+        win.callOnFlip(stopwatch.reset)
+        win.flip()
+        setParallelData(0)
+
+        # ── E. Wait for response ──────────────────────────────────────────────
         keys = event.waitKeys(keyList=["y", "n", "escape"])
-        
-        #attributing trigger ID's to each user input
-            if keys[0]=="y":
-                setParallelData(3)
-            elif keys[0]=="n":
-                setParallelData(4)
-        setParallelData(0) #resetting the trigger event name to 0
         rt = stopwatch.getTime()
-        
-        if not keys: continue
+
+        if not keys:
+            continue
+
         pressed_key = keys[0]
 
-        # Emergency exit - Move this ABOVE the results.append
+        # Emergency exit
         if pressed_key == 'escape':
             print("Experiment quit by user.")
             break
-            
-        #creating the fixation cross for 3 seconds until proceeding with the next word
-        win.flip()
+
+        # ── TRIGGER 4/5 — Button press (Y or N) ──────────────────────────────
+        if pressed_key == "y":
+            setParallelData(TRIG_RESP_Y)
+        elif pressed_key == "n":
+            setParallelData(TRIG_RESP_N)
+        core.wait(0.001)
+        setParallelData(0)
+
+        # ── F. TRIGGER 1 — Fixation cross onset ──────────────────────────────
         stim_fix.draw()
-        if frame == 1:   
-            win.callOnFlip(setParallelData, trigger)
-            pullTriggerDown = True  
-                
-        elif pullTriggerDown: 
-            win.callOnFlip(setParallelData, 0) 
-            pullTriggerDown = False
+        win.callOnFlip(setParallelData, TRIG_FIXATION)
         win.flip()
+        setParallelData(0)
         core.wait(3.0)
-        
-        # F. Record Data (Fixes the Case Sensitivity)
+
+        # ── G. Record Data ────────────────────────────────────────────────────
         results.append({
-            "ID": V['ID'],         
-            "Age": V['age'],       
+            "ID": V['ID'],
+            "Age": V['age'],
             "Gender": V['gender'],
             "Condition_ID": condition,
             "Condition_Prompt": task_text,
@@ -166,8 +163,6 @@ def experiment(wordlist_df):
             "Response": pressed_key,
             "Reaction_time": rt
         })
-        
-        # Brief blank screen (Inter-Stimulus Interval) to clear the eyes
 
     # --- 3. Wrap Up ---
     if results:
@@ -178,74 +173,55 @@ def experiment(wordlist_df):
         print("No data collected.")
         return pd.DataFrame()
 
-# Create the stimulus once at the top of your script
-# wrapWidth=30 is a good starting point for 'deg' units to keep text centered
+
+# ── Intro / consent screens ───────────────────────────────────────────────────
 intro_stim = visual.TextStim(win, text="", color="white", height=0.6, wrapWidth=30)
 
+
 def show_intro(text_list):
-    # Join the list into a single string with double line breaks
     formatted_text = "\n\n".join(text_list)
-    
-    # Update the stimulus and draw
     intro_stim.text = formatted_text
     intro_stim.draw()
     win.flip()
-    
-    # Wait for the user to press 't' to start
     event.waitKeys(keyList=['t'])
 
+
 consent_txt = [
-    u'Welcome to the experiment!:)',
+    u'Welcome to the experiment! :)',
     u'The data will be used for a Cognitive Science exam project.',
     u'Your data will be anonymized and by continuing you accept that your data will be used.',
-    u'It will not be used for any other purpose.'
-    u'By pressing "T" you agree to the conditions menioned above and continue'
+    u'It will not be used for any other purpose.',
+    u'By pressing "T" you agree to the conditions mentioned above and continue.'
 ]
 
-# Define your text list
 introText1 = [
     u'The experiment contains 2 conditions:',
-    u'1. Includes "A": Press “Y” if the word contains A, “N” if not.',
-    u'2. Living?: Press “Y” if it is a living thing, “N” if not.',
+    u'1. Includes "A": Press "Y" if the word contains A, "N" if not.',
+    u'2. Living?: Press "Y" if it is a living thing, "N" if not.',
     u'Press "T" to begin. The experiment starts 5 seconds after.'
 ]
 
-# --- 1. Display the Intro and Wait for 'T' ---
 show_intro(consent_txt)
-
 show_intro(introText1)
 
-# --- 2. The 5-second countdown wait ---
-# Clear text and show fixation
+# 5-second countdown before first trial
 stim_fix.draw()
 win.flip()
 core.wait(5.0)
 
-#resetting the parallel trigger to 0
-pullTriggerDown = False
+setParallelData(0)  # make sure trigger line starts clean
 
-# 1. Run the experiment and capture the data
+# ── Run ───────────────────────────────────────────────────────────────────────
 final_data = experiment(wordlist)
 
-# 2. Save the data (using the ID from your GUI)
-
+# ── Save ──────────────────────────────────────────────────────────────────────
 if not final_data.empty:
-
-    # Create EEG_data folder if it does not exist
     if not os.path.exists(SAVE_FOLDER):
         os.makedirs(SAVE_FOLDER)
-
     filename = f"data_p{V['ID']}.csv"
     full_path = os.path.join(SAVE_FOLDER, filename)
-
     final_data.to_csv(full_path, index=False)
-
     print(f"Data saved to: {full_path}")
 
-# 3. Clean up
 win.close()
 core.quit()
-
-
-
-
