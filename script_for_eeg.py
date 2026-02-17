@@ -89,6 +89,7 @@ def experiment(wordlist_df):
         task_text = condition_labels[condition]
         
         # B. Display the task text (Condition Label) for 1.5 seconds
+        #trigger here
         dis_txt(task_text)
         core.wait(1.5)
         
@@ -114,8 +115,23 @@ def experiment(wordlist_df):
         dis_txt(current_word)
         stopwatch.reset()
         
+            if frame == 1:   
+                win.callOnFlip(setParallelData, trigger)
+                pullTriggerDown = True  
+                
+            elif pullTriggerDown: 
+                win.callOnFlip(setParallelData, 0) 
+                pullTriggerDown = False
+
         # E. Wait for user response
         keys = event.waitKeys(keyList=["y", "n", "escape"])
+        
+        #attributing trigger ID's to each user input
+            if keys[0]=="y":
+                setParallelData(3)
+            elif keys[0]=="n":
+                setParallelData(4)
+        setParallelData(0) #resetting the trigger event name to 0
         rt = stopwatch.getTime()
         
         if not keys: continue
@@ -125,10 +141,17 @@ def experiment(wordlist_df):
         if pressed_key == 'escape':
             print("Experiment quit by user.")
             break
-        
+            
         #creating the fixation cross for 3 seconds until proceeding with the next word
         win.flip()
         stim_fix.draw()
+        if frame == 1:   
+            win.callOnFlip(setParallelData, trigger)
+            pullTriggerDown = True  
+                
+        elif pullTriggerDown: 
+            win.callOnFlip(setParallelData, 0) 
+            pullTriggerDown = False
         win.flip()
         core.wait(3.0)
         
@@ -197,6 +220,9 @@ show_intro(introText1)
 stim_fix.draw()
 win.flip()
 core.wait(5.0)
+
+#resetting the parallel trigger to 0
+pullTriggerDown = False
 
 # 1. Run the experiment and capture the data
 final_data = experiment(wordlist)
