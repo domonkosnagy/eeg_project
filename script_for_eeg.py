@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import random
+from triggers import setParallelData
 from psychopy import visual, core, event, gui, monitors
 
 """
@@ -77,6 +78,9 @@ def experiment(wordlist_df):
     # 15-minute timer (900 seconds)
     experiment_timer = core.CountdownTimer(15 * 60)
     
+    # avoiding repetition
+    used_indices = set()
+    
     # --- 2. The Main Loop ---
     while experiment_timer.getTime() > 0:
         
@@ -90,14 +94,21 @@ def experiment(wordlist_df):
         
         # C. Filter wordlist by condition and pick a random word
         # Note: This assumes your CSV has a column named 'condition'
-        sub_list = wordlist_df[wordlist_df['condition'] == condition]
-        
+        # Filter by condition AND remove already-used words
+        sub_list = wordlist_df[
+            (wordlist_df['condition'] == condition) &
+            (~wordlist_df.index.isin(used_indices))
+        ]
+
         if sub_list.empty:
-            print(f"Warning: No words found for condition {condition}")
-            continue 
-            
+            print(f"No unused words left for condition {condition}")
+            continue
+
         random_row = sub_list.sample(n=1).iloc[0]
-        current_word = random_row['word'] # Assumes column is named 'word'
+        current_word = random_row['word']
+
+        # Mark word as used
+        used_indices.add(random_row.name)
         
         # D. Display stimulus word and start timing
         dis_txt(current_word)
