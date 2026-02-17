@@ -48,7 +48,7 @@ stim_fix = visual.TextStim(win, '+')
 Stimuli section
 """
 import os
-os.chdir("/Users/nagydomonkos/Desktop/neuroscience/4/eeg_project") #double checking we're in the correct directory
+os.chdir(r"C:\Users\asger\OneDrive\Dokumenter\GitHub\eeg_project") #double checking we're in the correct directory
 
 # Load with semicolon
 wordlist = pd.read_csv('word_dataset.csv', sep=';')
@@ -160,6 +160,14 @@ def show_intro(text_list):
     # Wait for the user to press 't' to start
     event.waitKeys(keyList=['t'])
 
+consent_txt = [
+    u'Welcome to the experiment!:)',
+    u'The data will be used for a Cognitive Science exam project.',
+    u'Your data will be anonymized and by continuing you accept that your data will be used.',
+    u'It will not be used for any other purpose.'
+    u'By pressing "T" you agree to the conditions menioned above and continue'
+]
+
 # Define your text list
 introText1 = [
     u'The experiment contains 2 conditions:',
@@ -169,6 +177,8 @@ introText1 = [
 ]
 
 # --- 1. Display the Intro and Wait for 'T' ---
+show_intro(consent_txt)
+
 show_intro(introText1)
 
 # --- 2. The 5-second countdown wait ---

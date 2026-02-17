@@ -1,4 +1,0 @@
-ID,Age,Gender,Condition_ID,Condition_Prompt,Word,Response,Reaction_time
-37,27,female,1,Includes 'A'?,alpaca,y,6.198652699997183
-37,27,female,2,Living?,hook,n,5.747459699981846
-37,27,female,1,Includes 'A'?,castle,y,1.360069399990607
