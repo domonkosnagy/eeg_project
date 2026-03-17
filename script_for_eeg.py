@@ -14,13 +14,13 @@ FRAME_RATE = 60  # Hz
 SAVE_FOLDER = 'EEG_data'
 
 # ─── TRIGGER CODES ────────────────────────────────────────────────────────────
-TRIG_FIXATION   = 255
-TRIG_COND1_LABEL = 2   # "Includes A?" onset
-TRIG_COND2_LABEL = 3   # "Living?" onset
-TRIG_COND1_WORD  = 20   # Word onset, condition 1
-TRIG_COND2_WORD  = 30   # Word onset, condition 2
-TRIG_RESP_Y     = 1
-TRIG_RESP_N     = 0
+TRIG_FIXATION    = 1   # Fixation cross onset
+TRIG_COND1_LABEL = 2   # Condition 1 task label ("Includes A?") onset
+TRIG_COND2_LABEL = 3   # Condition 2 task label ("Living?") onset
+TRIG_COND1_WORD  = 4   # Stimulus word onset - condition 1
+TRIG_COND2_WORD  = 5   # Stimulus word onset - condition 2
+TRIG_RESP_Y      = 6   # Participant pressed "Y"
+TRIG_RESP_N      = 7   # Participant pressed "N"
 # ──────────────────────────────────────────────────────────────────────────────
 
 """
@@ -75,6 +75,7 @@ def send_trigger(code):
 def experiment(wordlist_df):
     # --- 1. Setup ---
     results = []
+    trigger_log = []  # NEW: Track all triggers with timestamps
 
     condition_labels = {
         1: "Includes 'A'?",
@@ -83,6 +84,9 @@ def experiment(wordlist_df):
 
     experiment_timer = core.CountdownTimer(15 * 60)
     used_indices = set()
+    
+    # Master clock for absolute timestamps
+    master_clock = core.Clock()
 
     # --- 2. The Main Loop ---
     while experiment_timer.getTime() > 0:
@@ -91,14 +95,28 @@ def experiment(wordlist_df):
         condition = random.choice([1, 2])
         task_text = condition_labels[condition]
 
-        # ── B. TRIGGER 2 — Condition label onset ──────────────────────────────
-        cond_stim = visual.TextStim(win, task_text, color="white")
+        # ── B. TRIGGER 2/3 — Condition label onset ───────────────────────────
         cond_trigger = TRIG_COND1_LABEL if condition == 1 else TRIG_COND2_LABEL
+        cond_stim = visual.TextStim(win, task_text, color="white")
         cond_stim.draw()
         win.callOnFlip(setParallelData, cond_trigger)
         win.flip()
-        setParallelData(0)        # reset trigger line
-        core.wait(1.5)        
+        
+        # Log the trigger
+        trigger_log.append({
+            'trigger_code': cond_trigger,
+            'trigger_name': f'COND{condition}_LABEL',
+            'onset_time': master_clock.getTime(),
+            'trial_number': len(results) + 1,
+            'condition': condition,
+            'word': '',  # not shown yet
+            'response': '',
+            'rt': ''
+        })
+        
+        core.wait(0.001)
+        setParallelData(0)
+        core.wait(1.499)
 
         # ── C. Filter wordlist ────────────────────────────────────────────────
         sub_list = wordlist_df[
@@ -114,13 +132,28 @@ def experiment(wordlist_df):
         current_word = random_row['word']
         used_indices.add(random_row.name)
 
-        # ── D. TRIGGER 3 — Stimulus word onset ────────────────────────────────
-        word_stim = visual.TextStim(win, current_word, color="white")
+        # ── D. TRIGGER 4/5 — Stimulus word onset ──────────────────────────────
         word_trigger = TRIG_COND1_WORD if condition == 1 else TRIG_COND2_WORD
+        word_stim = visual.TextStim(win, current_word, color="white")
         word_stim.draw()
         win.callOnFlip(setParallelData, word_trigger)
-        win.callOnFlip(stopwatch.reset)
+        win.callOnFlip(stopwatch.reset)   # start RT clock exactly at word flip
         win.flip()
+        
+        # Log the trigger
+        word_onset_time = master_clock.getTime()
+        trigger_log.append({
+            'trigger_code': word_trigger,
+            'trigger_name': f'COND{condition}_WORD',
+            'onset_time': word_onset_time,
+            'trial_number': len(results) + 1,
+            'condition': condition,
+            'word': current_word,
+            'response': '',  # not pressed yet
+            'rt': ''
+        })
+        
+        core.wait(0.001)
         setParallelData(0)
 
         # ── E. Wait for response ──────────────────────────────────────────────
@@ -139,9 +172,24 @@ def experiment(wordlist_df):
 
         # ── TRIGGER 4/5 — Button press (Y or N) ──────────────────────────────
         if pressed_key == "y":
-            setParallelData(TRIG_RESP_Y)
+            resp_trigger = TRIG_RESP_Y
+            setParallelData(resp_trigger)
         elif pressed_key == "n":
-            setParallelData(TRIG_RESP_N)
+            resp_trigger = TRIG_RESP_N
+            setParallelData(resp_trigger)
+        
+        # Log the trigger
+        trigger_log.append({
+            'trigger_code': resp_trigger,
+            'trigger_name': f'RESP_{pressed_key.upper()}',
+            'onset_time': master_clock.getTime(),
+            'trial_number': len(results) + 1,
+            'condition': condition,
+            'word': current_word,
+            'response': pressed_key,
+            'rt': rt
+        })
+        
         core.wait(0.001)
         setParallelData(0)
 
@@ -149,8 +197,22 @@ def experiment(wordlist_df):
         stim_fix.draw()
         win.callOnFlip(setParallelData, TRIG_FIXATION)
         win.flip()
+        
+        # Log the trigger
+        trigger_log.append({
+            'trigger_code': TRIG_FIXATION,
+            'trigger_name': 'FIXATION',
+            'onset_time': master_clock.getTime(),
+            'trial_number': len(results) + 1,
+            'condition': condition,
+            'word': current_word,
+            'response': pressed_key,
+            'rt': rt
+        })
+        
+        core.wait(0.001)
         setParallelData(0)
-        core.wait(3.0)
+        core.wait(2.999)          # remainder of the 3 s fixation period
 
         # ── G. Record Data ────────────────────────────────────────────────────
         results.append({
@@ -167,11 +229,13 @@ def experiment(wordlist_df):
     # --- 3. Wrap Up ---
     if results:
         df_experiment = pd.DataFrame(results)
+        df_triggers = pd.DataFrame(trigger_log)
         print(f"Experiment Complete. {len(df_experiment)} trials recorded.")
-        return df_experiment
+        print(f"Total triggers logged: {len(df_triggers)}")
+        return df_experiment, df_triggers
     else:
         print("No data collected.")
-        return pd.DataFrame()
+        return pd.DataFrame(), pd.DataFrame()
 
 
 # ── Intro / consent screens ───────────────────────────────────────────────────
@@ -212,16 +276,24 @@ core.wait(5.0)
 setParallelData(0)  # make sure trigger line starts clean
 
 # ── Run ───────────────────────────────────────────────────────────────────────
-final_data = experiment(wordlist)
+final_data, trigger_data = experiment(wordlist)
 
 # ── Save ──────────────────────────────────────────────────────────────────────
 if not final_data.empty:
     if not os.path.exists(SAVE_FOLDER):
         os.makedirs(SAVE_FOLDER)
+    
+    # Save trial-by-trial behavioral data
     filename = f"data_p{V['ID']}.csv"
     full_path = os.path.join(SAVE_FOLDER, filename)
     final_data.to_csv(full_path, index=False)
-    print(f"Data saved to: {full_path}")
+    print(f"Behavioral data saved to: {full_path}")
+    
+    # Save trigger log
+    trigger_filename = f"triggers_p{V['ID']}.csv"
+    trigger_path = os.path.join(SAVE_FOLDER, trigger_filename)
+    trigger_data.to_csv(trigger_path, index=False)
+    print(f"Trigger log saved to: {trigger_path}")
 
 win.close()
 core.quit()
