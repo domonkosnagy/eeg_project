@@ -1,0 +1,158 @@
+ID,Age,Gender,Condition_ID,Condition_Prompt,Word,Response,Reaction_time
+1,23,female,2,Living?,bottle,n,1.3058044190111104
+1,23,female,2,Living?,crow,y,1.4571449990035035
+1,23,female,1,Includes 'A'?,map,y,4.2146249169891234
+1,23,female,2,Living?,dolphin,y,1.001605458004633
+1,23,female,1,Includes 'A'?,shark,y,0.5706128719903063
+1,23,female,1,Includes 'A'?,backpack,y,1.3362155499926303
+1,23,female,2,Living?,gibbon,y,0.9347206209786236
+1,23,female,1,Includes 'A'?,water,y,0.5937281869992148
+1,23,female,1,Includes 'A'?,wallet,y,0.975476758001605
+1,23,female,2,Living?,ivy,n,2.034636563999811
+1,23,female,1,Includes 'A'?,camel,y,0.6688287340220995
+1,23,female,1,Includes 'A'?,lamp,y,0.5848395740031265
+1,23,female,2,Living?,chimney,n,4.09253661200637
+1,23,female,2,Living?,mosquito,y,0.6378451380005572
+1,23,female,2,Living?,robin,y,1.7456117179826833
+1,23,female,1,Includes 'A'?,hyena,y,0.6704997880151495
+1,23,female,1,Includes 'A'?,puma,y,0.6075870500062592
+1,23,female,2,Living?,drill,n,0.9205674179829657
+1,23,female,2,Living?,owl,y,0.9760942430002615
+1,23,female,2,Living?,dog,y,1.2666173540055752
+1,23,female,2,Living?,bell,n,1.2500745430006646
+1,23,female,2,Living?,octopus,y,1.0684806679782923
+1,23,female,2,Living?,rose,n,0.5374575289897621
+1,23,female,1,Includes 'A'?,guitar,y,1.8314334559836425
+1,23,female,1,Includes 'A'?,curtain,y,0.6296332039928529
+1,23,female,1,Includes 'A'?,road,y,0.5237527340068482
+1,23,female,1,Includes 'A'?,alligator,y,1.1623551849916112
+1,23,female,2,Living?,otter,y,0.6016372830199543
+1,23,female,2,Living?,bus,n,0.6609513060247991
+1,23,female,2,Living?,tiger,y,1.1188343690009788
+1,23,female,2,Living?,duck,y,6.499920725997072
+1,23,female,2,Living?,brick,n,1.880632885004161
+1,23,female,1,Includes 'A'?,swan,y,0.5048745030071586
+1,23,female,1,Includes 'A'?,alarm,y,1.6204428630007897
+1,23,female,2,Living?,bench,n,0.6372478969860822
+1,23,female,1,Includes 'A'?,vase,y,0.44220970099559054
+1,23,female,2,Living?,comb,n,1.7937039849930443
+1,23,female,2,Living?,button,n,0.6629489150072914
+1,23,female,2,Living?,button,n,0.8826399059907999
+1,23,female,1,Includes 'A'?,crane,y,0.8149232610012405
+1,23,female,2,Living?,net,n,0.769195105007384
+1,23,female,2,Living?,note,n,1.3763805550115649
+1,23,female,1,Includes 'A'?,ape,y,0.48313479000353254
+1,23,female,2,Living?,horn,n,0.6862768169958144
+1,23,female,2,Living?,moss,n,3.332069363008486
+1,23,female,1,Includes 'A'?,tarantula,y,2.4877159949974157
+1,23,female,1,Includes 'A'?,ladybug,y,1.1906814370013308
+1,23,female,1,Includes 'A'?,antelope,y,0.9010144250059966
+1,23,female,1,Includes 'A'?,armadillo,y,1.2685530390008353
+1,23,female,2,Living?,gun,n,0.9549268229748122
+1,23,female,1,Includes 'A'?,flashlight,y,2.192925634008134
+1,23,female,2,Living?,pen,n,1.6372128000075463
+1,23,female,1,Includes 'A'?,kangaroo,y,0.5631709920126013
+1,23,female,2,Living?,elk,y,1.2931527940090746
+1,23,female,1,Includes 'A'?,crab,y,1.1388091080007143
+1,23,female,1,Includes 'A'?,koala,y,0.5794319749984425
+1,23,female,2,Living?,moose,y,1.466597588994773
+1,23,female,2,Living?,window,n,1.2545109109778423
+1,23,female,2,Living?,lynx,y,0.9412849950022064
+1,23,female,2,Living?,butterfly,y,0.912609393009916
+1,23,female,2,Living?,engine,n,2.330459693999728
+1,23,female,1,Includes 'A'?,radar,y,1.5117074660083745
+1,23,female,1,Includes 'A'?,hammer,y,0.591548677009996
+1,23,female,1,Includes 'A'?,panda,y,0.5608925560081843
+1,23,female,1,Includes 'A'?,stamp,y,1.0811395760101732
+1,23,female,1,Includes 'A'?,giraffe,y,0.5300913500250317
+1,23,female,2,Living?,kiwi,y,5.841833618003875
+1,23,female,1,Includes 'A'?,chalk,y,1.0291304900019895
+1,23,female,1,Includes 'A'?,table,y,0.85811212201952
+1,23,female,2,Living?,pot,n,1.1808175070036668
+1,23,female,1,Includes 'A'?,blanket,y,0.5103785670071375
+1,23,female,1,Includes 'A'?,piranha,y,2.831507455004612
+1,23,female,2,Living?,belt,n,2.730483532010112
+1,23,female,1,Includes 'A'?,cobra,y,0.8632473440084141
+1,23,female,1,Includes 'A'?,watch,y,0.5515436540008523
+1,23,female,1,Includes 'A'?,statue,y,0.5555987650004681
+1,23,female,2,Living?,firefly,y,1.441114438988734
+1,23,female,2,Living?,box,n,0.7390030169917736
+1,23,female,1,Includes 'A'?,jaguar,y,0.3931611360167153
+1,23,female,1,Includes 'A'?,lantern,y,0.4887548509868793
+1,23,female,1,Includes 'A'?,bandage,y,0.5090887429832947
+1,23,female,2,Living?,beetle,y,1.3637660919921473
+1,23,female,2,Living?,jellyfish,y,0.6954242019855883
+1,23,female,2,Living?,ferret,n,1.7246540829946753
+1,23,female,2,Living?,python,y,2.3690660420106724
+1,23,female,1,Includes 'A'?,baboon,y,2.0805418690142687
+1,23,female,2,Living?,frog,y,1.921489947999362
+1,23,female,1,Includes 'A'?,chain,y,2.269616636011051
+1,23,female,1,Includes 'A'?,hamster,y,0.6219072719977703
+1,23,female,1,Includes 'A'?,catfish,y,0.5602440809889231
+1,23,female,2,Living?,lobster,y,0.8059173410001677
+1,23,female,1,Includes 'A'?,bear,y,1.4198687199968845
+1,23,female,2,Living?,horse,y,2.838862770993728
+1,23,female,1,Includes 'A'?,rabbit,y,0.6146834050014149
+1,23,female,2,Living?,drum,n,0.7643319299968425
+1,23,female,2,Living?,key,n,0.6112565000075847
+1,23,female,1,Includes 'A'?,eagle,y,1.0049466709897388
+1,23,female,2,Living?,roof,n,0.6977577819779981
+1,23,female,1,Includes 'A'?,ant,y,0.39336926699616015
+1,23,female,1,Includes 'A'?,gravel,y,3.7185826010245364
+1,23,female,1,Includes 'A'?,albatross,y,0.9650501860014629
+1,23,female,2,Living?,fish,y,0.6406769779860042
+1,23,female,2,Living?,coin,n,0.5888597269949969
+1,23,female,2,Living?,wolf,y,1.2349758339987602
+1,23,female,2,Living?,bulb,n,0.8423306240001693
+1,23,female,1,Includes 'A'?,sofa,y,0.8027467709907796
+1,23,female,2,Living?,exit,n,2.333771865000017
+1,23,female,1,Includes 'A'?,raccoon,y,0.6261215459962841
+1,23,female,2,Living?,chicken,y,0.664201970997965
+1,23,female,2,Living?,bridge,n,2.322283656016225
+1,23,female,1,Includes 'A'?,arch,y,0.5019462990167085
+1,23,female,2,Living?,cod,y,2.0503652569896076
+1,23,female,2,Living?,mop,n,2.141024598997319
+1,23,female,2,Living?,door,n,2.0685350129788276
+1,23,female,2,Living?,pigeon,y,0.6037757110025268
+1,23,female,1,Includes 'A'?,passport,y,2.789392696984578
+1,23,female,1,Includes 'A'?,grasshopper,y,0.395628152997233
+1,23,female,1,Includes 'A'?,stairs,y,0.7250259929860476
+1,23,female,1,Includes 'A'?,alpaca,y,0.5477076770039275
+1,23,female,2,Living?,pig,y,0.46051633101888
+1,23,female,2,Living?,brush,n,0.6317352170008235
+1,23,female,1,Includes 'A'?,camera,y,1.384932460001437
+1,23,female,1,Includes 'A'?,candle,y,2.650734378985362
+1,23,female,1,Includes 'A'?,jacket,y,0.9117226540111005
+1,23,female,2,Living?,lion,y,0.9308072359999642
+1,23,female,1,Includes 'A'?,flag,y,0.47487607499351725
+1,23,female,2,Living?,lock,n,0.5842268010019325
+1,23,female,2,Living?,truck,n,1.0194082930102013
+1,23,female,1,Includes 'A'?,badge,y,0.4580587140226271
+1,23,female,2,Living?,fence,n,1.0074488539830782
+1,23,female,1,Includes 'A'?,axle,y,0.8388222030189354
+1,23,female,2,Living?,plug,n,0.9407080940145534
+1,23,female,1,Includes 'A'?,hawk,y,0.26801925999461673
+1,23,female,1,Includes 'A'?,sandpaper,y,0.62089661200298
+1,23,female,1,Includes 'A'?,barrel,y,0.7930105470004492
+1,23,female,2,Living?,fox,y,1.1398926980036777
+1,23,female,2,Living?,turtle,y,0.9318617960088886
+1,23,female,2,Living?,bicycle,n,0.5889654229977168
+1,23,female,2,Living?,sheep,y,0.531743510015076
+1,23,female,1,Includes 'A'?,coral,y,0.5591189879924059
+1,23,female,2,Living?,pine,n,1.0380996910098474
+1,23,female,1,Includes 'A'?,clam,y,1.0139755029813386
+1,23,female,1,Includes 'A'?,attic,y,0.49705617799190804
+1,23,female,1,Includes 'A'?,gate,y,0.5744284060201608
+1,23,female,1,Includes 'A'?,galaxy,y,0.4000134459929541
+1,23,female,1,Includes 'A'?,compass,y,0.5746012890012935
+1,23,female,2,Living?,lens,n,1.7113901529810391
+1,23,female,2,Living?,joint,n,0.5653228230075911
+1,23,female,2,Living?,hose,n,3.4996032360068057
+1,23,female,1,Includes 'A'?,magnet,y,1.2238823999941815
+1,23,female,2,Living?,iron,n,1.4564071029890329
+1,23,female,1,Includes 'A'?,elephant,y,0.49616772899753414
+1,23,female,2,Living?,moth,y,1.5440333180013113
+1,23,female,2,Living?,bee,y,0.48704861401347443
+1,23,female,2,Living?,cup,n,0.5955444779829122
+1,23,female,2,Living?,hummingbird,y,1.6775326610077173
+1,23,female,2,Living?,monkey,y,1.1223203020053916
