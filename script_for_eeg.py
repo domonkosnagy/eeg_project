@@ -49,7 +49,11 @@ stim_fix = visual.TextStim(win, '+')
 Stimuli section
 """
 import os
+<<<<<<< Updated upstream
 os.chdir(r"C:\Users\asger\OneDrive\Dokumenter\GitHub\eeg_project") #double checking we're in the correct directory
+=======
+os.chdir(r"C:\Users\asger\OneDrive\Dokumenter\GitHub\eeg_project\EEG_data")
+>>>>>>> Stashed changes
 
 # Load with semicolon
 wordlist = pd.read_csv('word_dataset.csv', sep=';')
