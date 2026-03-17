@@ -1,15 +1,25 @@
-
+import pandas as pd
+import numpy as np
+import random
+from psychopy import visual, core, event, gui, monitors
 
 """
 Getting participant info
 """
-V = {'ID': '', 'age': '', 'gender': ['female', 'male', 'other']}
+V = {'ID': ''}
 if not gui.DlgFromDict(V, order=['ID', 'age', 'gender']).OK:
     core.quit()
 
 """
 Monitor stuff
 """
+
+MON_DISTANCE = 60  # Distance between subject's eyes and monitor 
+MON_WIDTH = 40  # Width of your monitor in cm
+MON_SIZE = [1920, 1080]  # Pixel-dimensions of your monitor
+FRAME_RATE=60 # Hz
+SAVE_FOLDER = 'EEG_data'
+
 my_monitor = monitors.Monitor('testMonitor', width=MON_WIDTH, distance=MON_DISTANCE)
 my_monitor.setSizePix(MON_SIZE)
 
@@ -31,21 +41,28 @@ stim_fix = visual.TextStim(win, '+')
 Stimuli section
 """
 import os
-os.chdir(r"C:\Users\asger\OneDrive\Dokumenter\GitHub\eeg_project\EEG_data")
+os.chdir(r"C:\Users\asger\OneDrive\Dokumenter\GitHub\eeg_project") #double checking we're in the correct directory
 
-wordlist = pd.read_csv('word_dataset.csv', sep=';')
+wordlist = pd.read_csv('word_dataset2.csv', sep=';')
 wordlist.columns = wordlist.columns.str.strip()
 wordlist['condition'] = pd.to_numeric(wordlist['condition'], errors='coerce')
 
+os.chdir(r"C:\Users\asger\OneDrive\Dokumenter\GitHub\eeg_project\EEG_data")
+
 output_file = pd.read_csv(f'data_p{V["ID"]}.csv')
 used_words = set(output_file['Word'].dropna())
+
 all_words = set(wordlist['word'].dropna())
 
 amount_to_draw = len(used_words)//2 #rounds down to the closest integer
 
 remaining_words = list(all_words - used_words)
-final_words = random.sample(remaining_words, amount_to_draw)
-random.shuffle(final_words)
+
+drawn_words = random.sample(remaining_words, amount_to_draw)
+
+final_list = list(drawn_words)+list(used_words)
+
+random.shuffle(final_list)
 
 def dis_txt(text_to_display):
     mes = visual.TextStim(win, text_to_display, color="white")
@@ -53,7 +70,7 @@ def dis_txt(text_to_display):
     win.flip()
 
 
-def experiment():
+def experiment(final_list):
     results = []
     
     # --- 2. The Main Loop ---
@@ -64,7 +81,7 @@ def experiment():
         current_word = final_list.pop() 
 
         # ── A. Display Stimulus Word ──────────────────────────────────────
-        word_stim = visual.TextStim(win, text=current_word, color="white", height=0.1)
+        word_stim = visual.TextStim(win, text=current_word, color="white", height=1)
         word_stim.draw()
         
         # Reset timer exactly when the word hits the screen
@@ -129,7 +146,7 @@ introText1 = [
     u'recall the words shown in the experiment',
     u'Press "Y" if you believe you saw the word',
     u'Press "N" if you dont recall having seen the word',
-    u'Now press "T" to continue'
+    u'Now press "T" to continue - 3 seconds to start from when you press'
 ]
 
 show_intro(consent_txt)
@@ -138,12 +155,13 @@ show_intro(introText1)
 # 5-second countdown before first trial
 stim_fix.draw()
 win.flip()
-core.wait(5.0)
+core.wait(3.0)
 
 # ── Run ───────────────────────────────────────────────────────────────────────
-final_data = experiment(wordlist)
+final_data = experiment(final_list)
 
 # ── Save ──────────────────────────────────────────────────────────────────────
+os.chdir(r"C:\Users\asger\OneDrive\Dokumenter\GitHub\eeg_project")
 if not final_data.empty:
     if not os.path.exists(SAVE_FOLDER):
         os.makedirs(SAVE_FOLDER)
