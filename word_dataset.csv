@@ -1,5 +1,5 @@
 word;living;non_living;contains_a;no_a;condition
-# Condition 1: Words WITH 'a' (75 total - mixed living/non-living)
+window;0;1;0;1;2
 alarm;0;1;1;0;1
 albatross;1;0;1;0;1
 alligator;1;0;1;0;1
@@ -19,7 +19,7 @@ badge;0;1;1;0;1
 bamboo;1;0;1;0;1
 banana;1;0;1;0;1
 bandage;0;1;1;0;1
-barracuda;1;0;1;0;1
+fish;1;0;0;1;1
 barrel;0;1;1;0;1
 basket;0;1;1;0;1
 blanket;0;1;1;0;1
@@ -32,12 +32,12 @@ canary;1;0;1;0;1
 candle;0;1;1;0;1
 canvas;0;1;1;0;1
 capybara;1;0;1;0;1
-caracal;1;0;1;0;1
+cat;1;0;1;0;1
 cargo;0;1;1;0;1
 carpet;0;1;1;0;1
 carriage;0;1;1;0;1
 cassette;0;1;1;0;1
-cassowary;1;0;1;0;1
+bird;1;0;0;1;1
 castle;0;1;1;0;1
 catfish;1;0;1;0;1
 cathedral;0;1;1;0;1
@@ -57,12 +57,12 @@ crane;1;0;1;0;1
 crater;0;1;1;0;1
 crayfish;1;0;1;0;1
 curtain;0;1;1;0;1
-daffodil;1;0;1;0;1
+flower;1;0;0;1;1
 daisy;1;0;1;0;1
 diamond;0;1;1;0;1
 dragonfly;1;0;1;0;1
 eagle;1;0;1;0;1
-easel;0;1;1;0;1
+weasel;0;1;1;0;1
 fabric;0;1;1;0;1
 falcon;1;0;1;0;1
 fawn;1;0;1;0;1
@@ -75,7 +75,7 @@ giraffe;1;0;1;0;1
 grasshopper;1;0;1;0;1
 hamster;1;0;1;0;1
 hare;1;0;1;0;1
-# Condition 1: Words WITHOUT 'a' (75 total - mixed living/non-living)
+watch;0;1;1;0;2
 bee;1;0;0;1;1
 beetle;1;0;0;1;1
 bell;0;1;0;1;1
@@ -115,7 +115,7 @@ dog;1;0;0;1;1
 dolphin;1;0;0;1;1
 dome;0;1;0;1;1
 door;0;1;0;1;1
-dormouse;1;0;0;1;1
+rat;1;0;1;0;1
 dove;1;0;0;1;1
 drum;0;1;0;1;1
 duck;1;0;0;1;1
@@ -136,7 +136,7 @@ fox;1;0;0;1;1
 frog;1;0;0;1;1
 fuse;0;1;0;1;1
 gem;0;1;0;1;1
-gibbon;1;0;0;1;1
+orangutan;1;0;1;0;1
 glove;0;1;0;1;1
 gnu;1;0;0;1;1
 goose;1;0;0;1;1
@@ -149,9 +149,9 @@ horse;1;0;0;1;1
 hummingbird;1;0;0;1;1
 ivy;1;0;0;1;1
 jellyfish;1;0;0;1;1
-kiwi;1;0;0;1;1
+cock;1;0;0;1;1
 lily;1;0;0;1;1
-# Condition 2: LIVING things (75 total - mixed with/without 'a')
+wallet;0;1;1;0;2
 anteater;1;0;1;0;2
 hawk;1;0;1;0;2
 hyena;1;0;1;0;2
@@ -159,7 +159,7 @@ iguana;1;0;1;0;2
 impala;1;0;1;0;2
 jaguar;1;0;1;0;2
 kangaroo;1;0;1;0;2
-katydid;1;0;1;0;2
+insect;1;0;0;1;2
 koala;1;0;1;0;2
 ladybug;1;0;1;0;2
 larvae;1;0;1;0;2
@@ -186,7 +186,7 @@ otter;1;0;0;1;2
 owl;1;0;0;1;2
 oyster;1;0;0;1;2
 panda;1;0;1;0;2
-pangolin;1;0;1;0;2
+buck;1;0;1;0;2
 panther;1;0;1;0;2
 parrot;1;0;1;0;2
 penguin;1;0;0;1;2
@@ -195,7 +195,7 @@ pigeon;1;0;0;1;2
 pine;1;0;0;1;2
 piranha;1;0;1;0;2
 platypus;1;0;1;0;2
-puffin;1;0;0;1;2
+pufferfish;1;0;0;1;2
 rabbit;1;0;1;0;2
 raccoon;1;0;1;0;2
 rattlesnake;1;0;1;0;2
@@ -206,7 +206,7 @@ salamander;1;0;1;0;2
 salmon;1;0;1;0;2
 shark;1;0;1;0;2
 sheep;1;0;0;1;2
-shrew;1;0;0;1;2
+leech;1;0;0;1;2
 skunk;1;0;0;1;2
 slug;1;0;0;1;2
 snipe;1;0;0;1;2
@@ -215,19 +215,19 @@ squid;1;0;0;1;2
 squirrel;1;0;0;1;2
 starfish;1;0;1;0;2
 swan;1;0;1;0;2
-swift;1;0;0;1;2
+deer;1;0;0;1;2
 tapir;1;0;1;0;2
 tarantula;1;0;1;0;2
 tiger;1;0;0;1;2
 tortoise;1;0;0;1;2
 trout;1;0;0;1;2
 turtle;1;0;0;1;2
-vole;1;0;0;1;2
+tick;1;0;0;1;2
 walrus;1;0;1;0;2
 wasp;1;0;1;0;2
 wolf;1;0;0;1;2
 zebra;1;0;1;0;2
-# Condition 2: NON-LIVING things (75 total - mixed with/without 'a')
+vase;0;1;1;0;2
 calendar;0;1;1;0;2
 canteen;0;1;1;0;2
 caravan;0;1;1;0;2
@@ -272,7 +272,7 @@ pen;0;1;0;1;2
 phone;0;1;0;1;2
 pier;0;1;0;1;2
 pillow;0;1;0;1;2
-plinth;0;1;0;1;2
+splinter;0;1;0;1;2
 rock;0;1;0;1;2
 rope;0;1;0;1;2
 rug;0;1;0;1;2
@@ -287,7 +287,7 @@ shard;0;1;1;0;2
 shelf;0;1;0;1;2
 shoe;0;1;0;1;2
 shrine;0;1;0;1;2
-sill;0;1;0;1;2
+kitchen;0;1;0;1;2
 sock;0;1;0;1;2
 sponge;0;1;0;1;2
 stamp;0;1;1;0;2
@@ -299,7 +299,3 @@ torch;0;1;0;1;2
 trough;0;1;0;1;2
 truck;0;1;0;1;2
 urn;0;1;0;1;2
-vase;0;1;1;0;2
-wallet;0;1;1;0;2
-watch;0;1;1;0;2
-window;0;1;0;1;2
