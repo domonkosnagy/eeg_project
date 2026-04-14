@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import random
-from triggers import setParallelData
+#from triggers import setParallelData
 from psychopy import visual, core, event, gui, monitors
 
 """
@@ -67,9 +67,9 @@ def hold_frames(stim, n_frames):
     This gives a clean one-frame trigger pulse without any core.wait().
     """
     for frame in range(n_frames):
-        if frame == 0:
+        #if frame == 0:
             # Schedule trigger reset on the upcoming flip
-            win.callOnFlip(setParallelData, 0)
+            #win.callOnFlip(setParallelData, 0)
         stim.draw()
         win.flip()
 
@@ -78,7 +78,7 @@ def hold_frames(stim, n_frames):
 Stimuli section
 """
 import os
-os.chdir("/Users/nagydomonkos/Desktop/neuroscience/4/eeg_project")
+os.chdir(r"C:\Users\asger\OneDrive\Dokumenter\GitHub\eeg_project")
 
 wordlist = pd.read_csv('word_dataset.csv', sep=';')
 wordlist.columns = wordlist.columns.str.strip()
@@ -112,7 +112,7 @@ def experiment(wordlist_df):
         cond_trigger = TRIG_COND1_LABEL if condition == 1 else TRIG_COND2_LABEL
         cond_stim = visual.TextStim(win, task_text, color="white")
         cond_stim.draw()
-        win.callOnFlip(setParallelData, cond_trigger)
+        #win.callOnFlip(setParallelData, cond_trigger)
         win.flip()
 
         # Log immediately after flip (master_clock.getTime() is as close as we get
@@ -152,7 +152,7 @@ def experiment(wordlist_df):
         word_trigger = TRIG_COND1_WORD if condition == 1 else TRIG_COND2_WORD
         word_stim = visual.TextStim(win, current_word, color="white")
         word_stim.draw()
-        win.callOnFlip(setParallelData, word_trigger)
+        #win.callOnFlip(setParallelData, word_trigger)
         win.callOnFlip(stopwatch.reset)  # RT clock starts exactly at word flip
         win.flip()
 
@@ -169,7 +169,7 @@ def experiment(wordlist_df):
 
         # Reset trigger on next flip, keep word visible while waiting for response.
         # We do a single extra flip to send the reset, then hand off to waitKeys.
-        win.callOnFlip(setParallelData, 0)
+        #win.callOnFlip(setParallelData, 0)
         word_stim.draw()
         win.flip()
 
@@ -189,7 +189,7 @@ def experiment(wordlist_df):
         # E. Response trigger — send immediately (not on a flip, because we
         # are between flips here). Reset on the upcoming fixation flip.
         resp_trigger = TRIG_RESP_Y if pressed_key == "y" else TRIG_RESP_N
-        setParallelData(resp_trigger)
+        #setParallelData(resp_trigger)
 
         trigger_log.append({
             'trigger_code': resp_trigger,
@@ -204,7 +204,7 @@ def experiment(wordlist_df):
 
         # F. Fixation onset — reset response trigger on the fixation flip
         stim_fix.draw()
-        win.callOnFlip(setParallelData, 0)
+        #win.callOnFlip(setParallelData, 0)
         win.flip()
 
         # Hold fixation for 180 frames = 3.0 s (trigger reset on frame 0 of hold_frames)
@@ -265,7 +265,7 @@ show_intro(consent_txt)
 show_intro(introText1)
 
 # 5-second countdown before first trial — frame loop, no core.wait
-setParallelData(0)  # ensure trigger line is clean before we start
+#setParallelData(0)  # ensure trigger line is clean before we start
 for frame in range(FRAMES_COUNTDOWN):
     stim_fix.draw()
     win.flip()

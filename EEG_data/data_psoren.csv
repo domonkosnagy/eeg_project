@@ -1,0 +1,164 @@
+ID,Age,Gender,Condition_ID,Condition_Prompt,Word,Response,Reaction_time
+soren,23,male,1,Includes 'A'?,crayfish,y,0.8812348000064958
+soren,23,male,2,Living?,deer,y,1.241498799994588
+soren,23,male,1,Includes 'A'?,armadillo,y,0.86712599999737
+soren,23,male,1,Includes 'A'?,button,n,0.7301030000089668
+soren,23,male,1,Includes 'A'?,flashlight,n,1.0950707999872975
+soren,23,male,1,Includes 'A'?,flint,n,1.1609445000067353
+soren,23,male,2,Living?,squid,y,0.8596187000221107
+soren,23,male,1,Includes 'A'?,chair,y,1.0294508000079077
+soren,23,male,1,Includes 'A'?,plant,y,0.6601854999898933
+soren,23,male,2,Living?,tortoise,y,0.7177170000213664
+soren,23,male,2,Living?,gravel,n,0.7587723000033293
+soren,23,male,2,Living?,garage,n,1.1122580000082962
+soren,23,male,2,Living?,raccoon,y,0.5996882999897934
+soren,23,male,1,Includes 'A'?,fuse,n,0.9507414000108838
+soren,23,male,2,Living?,rattlesnake,y,1.2559039000188932
+soren,23,male,2,Living?,shark,y,0.7844695999810938
+soren,23,male,1,Includes 'A'?,chameleon,y,1.8477060000004712
+soren,23,male,1,Includes 'A'?,bowl,n,1.074355500022648
+soren,23,male,1,Includes 'A'?,anchor,y,1.155132899992168
+soren,23,male,1,Includes 'A'?,bicycle,n,0.9051429000101052
+soren,23,male,2,Living?,rope,n,1.3824515999876894
+soren,23,male,2,Living?,satellite,n,0.8680785000033211
+soren,23,male,1,Includes 'A'?,fish,n,1.677438999991864
+soren,23,male,1,Includes 'A'?,duck,n,1.180485699995188
+soren,23,male,1,Includes 'A'?,fox,n,0.7373498000088148
+soren,23,male,1,Includes 'A'?,cargo,y,1.1717013999877963
+soren,23,male,2,Living?,moth,n,1.0192735999880824
+soren,23,male,1,Includes 'A'?,heron,y,0.9501250000030268
+soren,23,male,1,Includes 'A'?,camera,y,0.9524525000015274
+soren,23,male,2,Living?,robin,y,1.3346258999954443
+soren,23,male,2,Living?,phone,n,1.3198611999978311
+soren,23,male,2,Living?,salmon,y,0.7529226000187919
+soren,23,male,1,Includes 'A'?,flag,y,1.0030368999869097
+soren,23,male,2,Living?,hose,n,0.9435486999864224
+soren,23,male,1,Includes 'A'?,fossil,n,1.4650296999898273
+soren,23,male,1,Includes 'A'?,dingo,n,0.8296141999890096
+soren,23,male,1,Includes 'A'?,bamboo,y,1.228726600005757
+soren,23,male,2,Living?,snipe,n,1.6246972000226378
+soren,23,male,2,Living?,tent,n,0.851535399997374
+soren,23,male,1,Includes 'A'?,ant,y,0.8821893999993335
+soren,23,male,2,Living?,spider,y,0.606212599988794
+soren,23,male,1,Includes 'A'?,fern,n,1.1310372999869287
+soren,23,male,2,Living?,koala,y,0.589106500003254
+soren,23,male,1,Includes 'A'?,fish,n,1.048073200014187
+soren,23,male,1,Includes 'A'?,orangutan,y,1.04506620002212
+soren,23,male,2,Living?,scarecrow,y,0.6890179999754764
+soren,23,male,2,Living?,lens,n,0.6556985999923199
+soren,23,male,1,Includes 'A'?,chicken,y,0.6561262999894097
+soren,23,male,2,Living?,knife,n,0.8912878999835812
+soren,23,male,1,Includes 'A'?,carpet,y,0.8508641000080388
+soren,23,male,1,Includes 'A'?,cobra,y,1.0965119999891613
+soren,23,male,2,Living?,slug,n,1.1244726000004448
+soren,23,male,2,Living?,lava,n,0.9916035999776796
+soren,23,male,2,Living?,tool,n,0.9557114999915939
+soren,23,male,1,Includes 'A'?,cable,y,0.9285679000022355
+soren,23,male,2,Living?,tick,y,0.8832153999828734
+soren,23,male,1,Includes 'A'?,bird,n,1.2495941999950446
+soren,23,male,1,Includes 'A'?,dolphin,n,1.1600947999977507
+soren,23,male,1,Includes 'A'?,firefly,n,0.9997238999931142
+soren,23,male,2,Living?,ladybug,y,1.0079113999963738
+soren,23,male,1,Includes 'A'?,grasshopper,y,0.8166646999889053
+soren,23,male,2,Living?,sand,n,0.8997712999989744
+soren,23,male,1,Includes 'A'?,bluebell,n,0.7691320999874733
+soren,23,male,2,Living?,ray,y,1.397918300004676
+soren,23,male,1,Includes 'A'?,crow,n,1.1146861999877729
+soren,23,male,2,Living?,urn,n,1.0657875999750104
+soren,23,male,1,Includes 'A'?,coin,n,0.8117275999975391
+soren,23,male,1,Includes 'A'?,compass,y,0.6807766999991145
+soren,23,male,2,Living?,wolf,y,0.6755036000104155
+soren,23,male,2,Living?,mop,n,0.9660732999909669
+soren,23,male,1,Includes 'A'?,elk,n,0.7381030000105966
+soren,23,male,2,Living?,impala,y,1.2144542000023648
+soren,23,male,1,Includes 'A'?,clock,n,0.8502520999754779
+soren,23,male,1,Includes 'A'?,frog,n,0.5679966000025161
+soren,23,male,1,Includes 'A'?,hook,n,0.8858459000184666
+soren,23,male,1,Includes 'A'?,book,n,0.8194787999964319
+soren,23,male,2,Living?,stamp,n,1.1608798999805003
+soren,23,male,1,Includes 'A'?,castle,y,1.0176403999794275
+soren,23,male,2,Living?,table,n,1.3643495999858715
+soren,23,male,2,Living?,orb,n,1.015453100000741
+soren,23,male,2,Living?,marlin,y,1.2102858999860473
+soren,23,male,1,Includes 'A'?,cassette,y,1.4695846000104211
+soren,23,male,2,Living?,larvae,y,1.041602499986766
+soren,23,male,1,Includes 'A'?,alarm,y,0.6138885999971535
+soren,23,male,1,Includes 'A'?,attic,y,0.8493516999878921
+soren,23,male,1,Includes 'A'?,bucket,n,1.6901592000212986
+soren,23,male,1,Includes 'A'?,flame,y,0.7334565999917686
+soren,23,male,2,Living?,oyster,y,0.7558357999951113
+soren,23,male,2,Living?,kitchen,n,0.7730447999783792
+soren,23,male,2,Living?,wallet,n,1.1860931999981403
+soren,23,male,1,Includes 'A'?,brush,n,1.231681800010847
+soren,23,male,2,Living?,penguin,y,0.9016750000009779
+soren,23,male,1,Includes 'A'?,cave,y,0.6722544000076596
+soren,23,male,1,Includes 'A'?,fork,n,0.7423791000037454
+soren,23,male,1,Includes 'A'?,hummingbird,n,0.9168737000145484
+soren,23,male,1,Includes 'A'?,bridge,n,0.6904679000144824
+soren,23,male,2,Living?,torch,n,0.6737988999811932
+soren,23,male,1,Includes 'A'?,gazelle,y,0.7777018000197131
+soren,23,male,2,Living?,panther,y,1.165862499998184
+soren,23,male,1,Includes 'A'?,arch,y,0.8476349999837112
+soren,23,male,2,Living?,jaguar,y,0.7844291000219528
+soren,23,male,1,Includes 'A'?,butterfly,n,0.8158268999832217
+soren,23,male,1,Includes 'A'?,goose,n,0.9400133999879472
+soren,23,male,2,Living?,tiger,y,0.7643711999990046
+soren,23,male,1,Includes 'A'?,box,n,0.7745243000099435
+soren,23,male,2,Living?,paper,n,1.0803424999758136
+soren,23,male,2,Living?,iguana,y,1.2143184000160545
+soren,23,male,2,Living?,newt,n,1.2050853000255302
+soren,23,male,1,Includes 'A'?,fabric,y,0.7078314000100363
+soren,23,male,1,Includes 'A'?,cork,n,0.7080481000011787
+soren,23,male,2,Living?,magpie,n,1.120927899988601
+soren,23,male,1,Includes 'A'?,blanket,y,0.7238894999900367
+soren,23,male,1,Includes 'A'?,axle,y,1.367690399987623
+soren,23,male,2,Living?,octopus,y,1.0585570000112057
+soren,23,male,2,Living?,watch,n,1.5640495999832638
+soren,23,male,2,Living?,lamp,n,0.7888823999965098
+soren,23,male,2,Living?,kangaroo,y,0.947282900015125
+soren,23,male,1,Includes 'A'?,grill,n,0.7354656000097748
+soren,23,male,1,Includes 'A'?,cod,n,1.2710197000124026
+soren,23,male,1,Includes 'A'?,cup,n,1.1886959999974351
+soren,23,male,1,Includes 'A'?,emu,n,1.3344110999896657
+soren,23,male,1,Includes 'A'?,candle,y,0.953897000028519
+soren,23,male,1,Includes 'A'?,daisy,y,1.1667324000154622
+soren,23,male,2,Living?,wasp,y,1.4264861000119708
+soren,23,male,2,Living?,granite,n,0.7326708999753464
+soren,23,male,2,Living?,anteater,y,1.094801799976267
+soren,23,male,1,Includes 'A'?,bottle,n,0.7767038000165485
+soren,23,male,1,Includes 'A'?,catfish,y,1.0319519999902695
+soren,23,male,1,Includes 'A'?,glove,n,0.9309472000168171
+soren,23,male,2,Living?,platypus,y,0.7076944999862462
+soren,23,male,1,Includes 'A'?,bison,n,0.8918621000193525
+soren,23,male,1,Includes 'A'?,bandage,y,0.9352268000075128
+soren,23,male,1,Includes 'A'?,barrel,y,0.7805818000051659
+soren,23,male,2,Living?,palace,n,1.0263012000068557
+soren,23,male,1,Includes 'A'?,clover,n,0.8360946000029799
+soren,23,male,1,Includes 'A'?,falcon,y,0.7905911999987438
+soren,23,male,1,Includes 'A'?,flamingo,y,0.9587225000141189
+soren,23,male,2,Living?,shard,n,1.3719233000010718
+soren,23,male,1,Includes 'A'?,bee,n,1.5160658999811858
+soren,23,male,1,Includes 'A'?,brick,n,1.1502816999854986
+soren,23,male,2,Living?,walrus,y,0.6944834000023548
+soren,23,male,1,Includes 'A'?,gun,n,1.5817672999983188
+soren,23,male,2,Living?,sandstone,n,1.8293173999991268
+soren,23,male,2,Living?,maze,n,1.4230071000056341
+soren,23,male,1,Includes 'A'?,flower,n,1.0290020999964327
+soren,23,male,1,Includes 'A'?,bell,n,1.0187723999843001
+soren,23,male,1,Includes 'A'?,cheetah,y,1.403920000011567
+soren,23,male,2,Living?,lion,y,0.8567190000030678
+soren,23,male,2,Living?,pen,n,0.7880618999770377
+soren,23,male,1,Includes 'A'?,charcoal,y,0.8986702999973204
+soren,23,male,1,Includes 'A'?,backpack,y,1.2718569000135176
+soren,23,male,1,Includes 'A'?,baboon,y,1.127686599997105
+soren,23,male,2,Living?,ledge,n,0.7664589999767486
+soren,23,male,2,Living?,hyena,y,1.6253399999986868
+soren,23,male,2,Living?,marble,n,1.049491699988721
+soren,23,male,1,Includes 'A'?,horse,y,1.2300502000143752
+soren,23,male,2,Living?,satchel,n,0.8779134000069462
+soren,23,male,2,Living?,rabbit,y,1.0255224000138696
+soren,23,male,2,Living?,truck,n,1.2715829999942798
+soren,23,male,1,Includes 'A'?,eagle,y,1.074489500024356
+soren,23,male,1,Includes 'A'?,coyote,n,0.987159000011161
+soren,23,male,1,Includes 'A'?,canvas,y,0.9095768999832217
+soren,23,male,1,Includes 'A'?,basket,y,1.0159718999930192

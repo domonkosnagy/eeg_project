@@ -1,0 +1,172 @@
+ID,Age,Gender,Condition_ID,Condition_Prompt,Word,Response,Reaction_time
+william,24,male,2,Living?,sandstone,n,0.713621100410819
+william,24,male,2,Living?,oyster,y,0.7041544988751411
+william,24,male,1,Includes 'A'?,cork,n,0.5905687008053064
+william,24,male,1,Includes 'A'?,compass,y,0.5856391005218029
+william,24,male,1,Includes 'A'?,carpet,y,0.6128720007836819
+william,24,male,1,Includes 'A'?,bucket,n,0.7752673998475075
+william,24,male,2,Living?,tortoise,n,0.6272052992135286
+william,24,male,2,Living?,moth,y,0.5888691991567612
+william,24,male,1,Includes 'A'?,bridge,n,1.1592190004885197
+william,24,male,2,Living?,squid,y,0.6279016006737947
+william,24,male,2,Living?,paper,n,0.9975911993533373
+william,24,male,2,Living?,zebra,y,0.791983000934124
+william,24,male,1,Includes 'A'?,book,n,0.4992563985288143
+william,24,male,2,Living?,koala,y,0.6094460003077984
+william,24,male,2,Living?,iguana,y,0.8355457000434399
+william,24,male,2,Living?,sponge,n,0.5972135998308659
+william,24,male,2,Living?,spider,y,0.5205045007169247
+william,24,male,2,Living?,pine,y,0.9338396992534399
+william,24,male,2,Living?,lion,y,0.5712279006838799
+william,24,male,1,Includes 'A'?,flint,n,0.5753013007342815
+william,24,male,1,Includes 'A'?,fork,n,0.8267906997352839
+william,24,male,2,Living?,scaffold,n,0.796679001301527
+william,24,male,2,Living?,slug,y,0.7196274008601904
+william,24,male,1,Includes 'A'?,canary,y,0.7250382993370295
+william,24,male,2,Living?,mirror,n,0.6672776006162167
+william,24,male,2,Living?,shoe,n,0.6105700004845858
+william,24,male,1,Includes 'A'?,broom,n,1.0774929001927376
+william,24,male,2,Living?,wallet,n,0.7013765014708042
+william,24,male,2,Living?,parrot,y,0.5478012003004551
+william,24,male,1,Includes 'A'?,canal,y,0.5681673008948565
+william,24,male,1,Includes 'A'?,ferret,n,0.6281587984412909
+william,24,male,2,Living?,urn,n,0.6773375999182463
+william,24,male,1,Includes 'A'?,flashlight,n,0.6135655995458364
+william,24,male,1,Includes 'A'?,bolt,n,1.5521502997726202
+william,24,male,1,Includes 'A'?,fox,y,0.6364409010857344
+william,24,male,1,Includes 'A'?,fawn,y,0.6455441005527973
+william,24,male,1,Includes 'A'?,belt,n,0.7584948986768723
+william,24,male,1,Includes 'A'?,crow,n,0.5711809005588293
+william,24,male,1,Includes 'A'?,crab,y,0.7028686013072729
+william,24,male,2,Living?,turtle,y,0.5806852001696825
+william,24,male,2,Living?,jaguar,y,0.5926914010196924
+william,24,male,1,Includes 'A'?,horse,n,0.7235671989619732
+william,24,male,1,Includes 'A'?,cable,y,0.7133416011929512
+william,24,male,2,Living?,pen,n,0.9918018002063036
+william,24,male,1,Includes 'A'?,weasel,y,0.810988299548626
+william,24,male,2,Living?,caravan,y,0.6615033000707626
+william,24,male,2,Living?,marble,n,1.0378328002989292
+william,24,male,1,Includes 'A'?,chipmunk,n,1.1350274998694658
+william,24,male,1,Includes 'A'?,alarm,y,0.6921654995530844
+william,24,male,2,Living?,panda,y,0.6432221997529268
+william,24,male,2,Living?,pillow,n,0.8204808998852968
+william,24,male,1,Includes 'A'?,cock,n,0.6462492998689413
+william,24,male,1,Includes 'A'?,camel,y,0.8153077010065317
+william,24,male,1,Includes 'A'?,bell,n,0.657090101391077
+william,24,male,1,Includes 'A'?,plant,y,0.7136599998921156
+william,24,male,2,Living?,otter,y,0.8315933998674154
+william,24,male,1,Includes 'A'?,armadillo,y,0.6651280000805855
+william,24,male,2,Living?,salmon,y,0.7766809016466141
+william,24,male,1,Includes 'A'?,jellyfish,n,1.1085585001856089
+william,24,male,2,Living?,magpie,y,0.9150027986615896
+william,24,male,1,Includes 'A'?,fossil,n,1.072638500481844
+william,24,male,1,Includes 'A'?,heron,n,0.8725380003452301
+william,24,male,2,Living?,stamp,n,0.8323954995721579
+william,24,male,1,Includes 'A'?,crater,y,0.9856349993497133
+william,24,male,2,Living?,rattlesnake,y,1.3006979003548622
+william,24,male,2,Living?,shelf,n,0.5871523004025221
+william,24,male,2,Living?,pier,n,1.1662469003349543
+william,24,male,1,Includes 'A'?,cassette,y,0.7782166991382837
+william,24,male,2,Living?,kitchen,n,0.9975350014865398
+william,24,male,1,Includes 'A'?,elk,n,0.8880934007465839
+william,24,male,2,Living?,shark,y,0.5194437000900507
+william,24,male,2,Living?,mole,y,0.5734179001301527
+william,24,male,2,Living?,llama,y,0.7846942003816366
+william,24,male,2,Living?,passport,n,0.7560357004404068
+william,24,male,2,Living?,owl,y,0.6563760992139578
+william,24,male,1,Includes 'A'?,coyote,n,0.7848351988941431
+william,24,male,1,Includes 'A'?,hook,n,0.82010000012815
+william,24,male,1,Includes 'A'?,flower,n,0.7019769009202719
+william,24,male,2,Living?,newt,y,2.1882009990513325
+william,24,male,1,Includes 'A'?,emu,n,0.9912344999611378
+william,24,male,1,Includes 'A'?,alpaca,y,0.6980878002941608
+william,24,male,2,Living?,vase,n,0.9528720993548632
+william,24,male,2,Living?,tool,n,0.6532506998628378
+william,24,male,1,Includes 'A'?,alligator,y,0.6060064993798733
+william,24,male,1,Includes 'A'?,dome,n,0.48020320013165474
+william,24,male,1,Includes 'A'?,disc,n,0.5759414993226528
+william,24,male,1,Includes 'A'?,beetle,n,0.5638469997793436
+william,24,male,2,Living?,kangaroo,y,0.7682927995920181
+william,24,male,2,Living?,rug,n,0.6199805997312069
+william,24,male,1,Includes 'A'?,grasshopper,y,0.7257784008979797
+william,24,male,1,Includes 'A'?,comb,n,0.8592016007751226
+william,24,male,1,Includes 'A'?,bamboo,y,0.876129399985075
+william,24,male,2,Living?,satchel,n,0.6758378986269236
+william,24,male,2,Living?,mesh,n,0.5636828001588583
+william,24,male,2,Living?,calendar,n,0.8720759004354477
+william,24,male,2,Living?,mantis,y,0.6879340000450611
+william,24,male,2,Living?,swan,y,0.7270610984414816
+william,24,male,1,Includes 'A'?,coral,y,0.6449276991188526
+william,24,male,2,Living?,panther,y,0.6219676993787289
+william,24,male,1,Includes 'A'?,flame,y,0.7757256999611855
+william,24,male,2,Living?,mouse,y,0.6407482009381056
+william,24,male,2,Living?,marlin,y,0.7859118990600109
+william,24,male,1,Includes 'A'?,duck,n,0.6452639009803534
+william,24,male,2,Living?,sand,n,0.7021997012197971
+william,24,male,1,Includes 'A'?,cactus,y,0.6205964013934135
+william,24,male,2,Living?,tent,n,0.550500700250268
+william,24,male,1,Includes 'A'?,avocado,y,0.538935698568821
+william,24,male,2,Living?,gate,y,0.6479914989322424
+william,24,male,1,Includes 'A'?,fish,n,0.5287603009492159
+william,24,male,1,Includes 'A'?,fern,n,0.7021246012300253
+william,24,male,1,Includes 'A'?,baboon,y,0.796544199809432
+william,24,male,2,Living?,ledge,n,0.59132120013237
+william,24,male,1,Includes 'A'?,carriage,y,0.7063388992100954
+william,24,male,2,Living?,wasp,y,0.5933123007416725
+william,24,male,1,Includes 'A'?,gem,n,0.6283238995820284
+william,24,male,1,Includes 'A'?,brush,n,0.5263717994093895
+william,24,male,2,Living?,net,n,0.9642441999167204
+william,24,male,1,Includes 'A'?,cobra,y,0.6882002986967564
+william,24,male,1,Includes 'A'?,dog,n,0.775644700974226
+william,24,male,1,Includes 'A'?,dragonfly,y,0.77939079888165
+william,24,male,1,Includes 'A'?,barrel,y,0.7347727008163929
+william,24,male,1,Includes 'A'?,dove,n,0.5722694993019104
+william,24,male,1,Includes 'A'?,fuse,n,0.5920831002295017
+william,24,male,1,Includes 'A'?,fence,n,0.5475781988352537
+william,24,male,2,Living?,manta,y,1.080477099865675
+william,24,male,2,Living?,snipe,y,1.8000742997974157
+william,24,male,2,Living?,pigeon,y,0.6742227990180254
+william,24,male,2,Living?,maze,n,1.0181948989629745
+william,24,male,1,Includes 'A'?,frog,y,0.5881516002118587
+william,24,male,2,Living?,insect,y,0.6309054996818304
+william,24,male,2,Living?,buck,y,0.8966553006321192
+william,24,male,2,Living?,orb,n,0.6715210992842913
+william,24,male,1,Includes 'A'?,cargo,y,0.7915474008768797
+william,24,male,1,Includes 'A'?,basket,y,0.7624647002667189
+william,24,male,1,Includes 'A'?,badge,y,0.9108595997095108
+william,24,male,1,Includes 'A'?,albatross,y,0.5894559994339943
+william,24,male,2,Living?,starfish,y,0.6644995007663965
+william,24,male,1,Includes 'A'?,crayfish,y,0.560351800173521
+william,24,male,2,Living?,monkey,y,1.0205979011952877
+william,24,male,1,Includes 'A'?,box,n,0.6224801000207663
+william,24,male,1,Includes 'A'?,hummingbird,n,0.8966699987649918
+william,24,male,2,Living?,trough,n,0.9194837994873524
+william,24,male,1,Includes 'A'?,banana,y,0.5810765996575356
+william,24,male,1,Includes 'A'?,gnu,n,0.6082095000892878
+william,24,male,2,Living?,lava,n,1.122672401368618
+william,24,male,1,Includes 'A'?,door,n,0.656445499509573
+william,24,male,1,Includes 'A'?,diamond,y,0.6489017996937037
+william,24,male,1,Includes 'A'?,dingo,n,0.6092065013945103
+william,24,male,1,Includes 'A'?,camera,y,0.6357527002692223
+william,24,male,2,Living?,furnace,n,0.7009478993713856
+william,24,male,2,Living?,flask,n,0.6114585008472204
+william,24,male,2,Living?,hammer,n,0.7737357001751661
+william,24,male,2,Living?,shard,n,0.6897272989153862
+william,24,male,1,Includes 'A'?,cheetah,y,0.9768448993563652
+william,24,male,2,Living?,lynx,y,0.6679114010185003
+william,24,male,2,Living?,mop,n,0.6924185995012522
+william,24,male,2,Living?,guitar,n,0.9474615007638931
+william,24,male,1,Includes 'A'?,rat,y,0.5286203995347023
+william,24,male,2,Living?,hawk,y,0.5663661006838083
+william,24,male,1,Includes 'A'?,flamingo,y,0.578201400116086
+william,24,male,2,Living?,mug,n,0.6860881987959146
+william,24,male,2,Living?,galaxy,n,1.0287580005824566
+william,24,male,2,Living?,knife,n,0.6548711005598307
+william,24,male,1,Includes 'A'?,bicycle,n,0.5754094999283552
+william,24,male,1,Includes 'A'?,catfish,y,0.5072026010602713
+william,24,male,2,Living?,pufferfish,y,0.5855090990662575
+william,24,male,1,Includes 'A'?,chain,y,0.4846682995557785
+william,24,male,2,Living?,octopus,y,0.7398483008146286
+william,24,male,2,Living?,tapir,n,0.6011988986283541
+william,24,male,1,Includes 'A'?,bison,n,1.019386800006032
+william,24,male,1,Includes 'A'?,fish,n,0.6371451988816261
