@@ -14,7 +14,6 @@ FRAME_RATE = 60  # Hz
 SAVE_FOLDER = 'EEG_data'
 
 # TRIGGER CODES
-TRIG_FIXATION    = 1   # Fixation cross onset
 TRIG_COND1_LABEL = 2   # Condition 1 task label ("Includes A?") onset
 TRIG_COND2_LABEL = 3   # Condition 2 task label ("Living?") onset
 TRIG_COND1_WORD  = 4   # Stimulus word onset - condition 1

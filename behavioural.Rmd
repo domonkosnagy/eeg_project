@@ -1,0 +1,80 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+data
+```{r}
+getwd()
+setwd("/Users/nagydomonkos/Desktop/neuroscience/4/eeg_project/EEG_data")
+d1 <- read.csv("data_psoren.csv")
+d2 <- read.csv("data_pwilliam.csv")
+m1 <- read.csv("data_psoren_memory.csv")
+m2 <- read.csv("data_pwilliam_memory.csv")
+
+# create a new column in m1 and m2 to indicate if word has appeared in d1 and d2 respectively
+m1$appeared <- ifelse(m1$Word %in% d1$Word, 1, 0)
+m2$appeared <- ifelse(m2$Word %in% d2$Word, 1, 0)
+
+# create a new column in m1 and m2 to indicate if word has appeared in Condition_Prompt 1 or 2 or has not appeared; d1 and d2 respectively
+m1$Condition_Prompt <- ifelse(m1$Word %in% d1$Word[d1$Condition_ID == 1], "Superficial", ifelse(m1$Word %in% d1$Word[d1$Condition_ID == 2], "Deep", "Not appeared"))
+m2$Condition_Prompt <- ifelse(m2$Word %in% d2$Word[d2$Condition_ID == 1], "Superficial", ifelse(m2$Word %in% d2$Word[d2$Condition_ID == 2], "Deep", "Not appeared"))
+```
+
+```{r}
+# determine correctness of responses in m1 and m2; if appeared == 1 and Response == "y then correct, if appeared == 0 and Response == "n" then correct, else incorrect
+m1$correct <- ifelse((m1$appeared == 1 & m1$Response == "y") | (m1$appeared == 0 & m1$Response == "n"), 1, 0)
+m2$correct <- ifelse((m2$appeared == 1 & m2$Response == "y") | (m2$appeared == 0 & m2$Response == "n"), 1, 0)
+```
+
+```{r}
+# change data type of correct column to numeric
+m1$correct <- as.numeric(m1$correct)
+m2$correct <- as.numeric(m2$correct)
+# calculate accuracy 
+accuracy_m1 <- mean(m1$correct)
+accuracy_m2 <- mean(m2$correct)
+
+# check correctness in different conditions in m1 and m2
+accuracy_m1_condition <- m1 %>%
+  group_by(Condition_Prompt) %>%
+  summarise(accuracy = mean(correct))
+accuracy_m2_condition <- m2 %>%
+  group_by(Condition_Prompt) %>%
+  summarise(accuracy = mean(correct))
+
+accuracy_m1_condition
+accuracy_m2_condition
+```
+```{r}
+# create a bar plot to show accuracy in different conditions in m1 and m2
+ggplot(accuracy_m1_condition, aes(x = Condition_Prompt, y = accuracy)) +
+  geom_bar(stat = "identity") +
+  ggtitle("Accuracy in different conditions in m1") +
+  xlab("Condition Prompt") +
+  ylab("Accuracy")
+ggplot(accuracy_m2_condition, aes(x = Condition_Prompt, y = accuracy)) +
+  geom_bar(stat = "identity") +
+  ggtitle("Accuracy in different conditions in m2") +
+  xlab("Condition Prompt") +
+  ylab("Accuracy")
+```
+
+```{r}
+# anovas
+anova_m1 <- aov(correct ~ Condition_Prompt, data = m1)
+anova_m2 <- aov(correct ~ Condition_Prompt, data = m2)
+
+anova_m1_summary <- summary(anova_m1)
+anova_m2_summary <- summary(anova_m2)
+
+anova_m1_summary
+anova_m2_summary
+
+# look at pairwise comparisons
+pairwise_m1 <- pairwise.t.test(m1$correct, m1$Condition_Prompt, p.adjust.method = "bonferroni")
+pairwise_m2 <- pairwise.t.test(m2$correct, m2$Condition_Prompt, p.adjust.method = "bonferroni")
+pairwise_m1
+pairwise_m2
+```
+
