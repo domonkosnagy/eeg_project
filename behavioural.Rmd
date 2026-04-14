@@ -38,23 +38,37 @@ accuracy_m2 <- mean(m2$correct)
 # check correctness in different conditions in m1 and m2
 accuracy_m1_condition <- m1 %>%
   group_by(Condition_Prompt) %>%
-  summarise(accuracy = mean(correct))
+  summarise(
+    n = n(),
+    accuracy = mean(correct),
+    se = sqrt(accuracy * (1 - accuracy) / n)  # SE for a proportion
+  )
 accuracy_m2_condition <- m2 %>%
   group_by(Condition_Prompt) %>%
-  summarise(accuracy = mean(correct))
+  summarise(
+    n = n(),
+    accuracy = mean(correct),
+    se = sqrt(accuracy * (1 - accuracy) / n)  # SE for a proportion
+  )
 
 accuracy_m1_condition
 accuracy_m2_condition
 ```
 ```{r}
-# create a bar plot to show accuracy in different conditions in m1 and m2
+# create a bar plot with SE to show accuracy in different conditions in m1 and m2
 ggplot(accuracy_m1_condition, aes(x = Condition_Prompt, y = accuracy)) +
-  geom_bar(stat = "identity") +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  geom_errorbar(aes(ymin = accuracy - 1.96 * se, 
+                    ymax = accuracy + 1.96 * se), 
+                width = 0.2) +
   ggtitle("Accuracy in different conditions in m1") +
   xlab("Condition Prompt") +
   ylab("Accuracy")
 ggplot(accuracy_m2_condition, aes(x = Condition_Prompt, y = accuracy)) +
-  geom_bar(stat = "identity") +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  geom_errorbar(aes(ymin = accuracy - 1.96 * se, 
+                    ymax = accuracy + 1.96 * se), 
+                width = 0.2) +
   ggtitle("Accuracy in different conditions in m2") +
   xlab("Condition Prompt") +
   ylab("Accuracy")
@@ -76,5 +90,76 @@ pairwise_m1 <- pairwise.t.test(m1$correct, m1$Condition_Prompt, p.adjust.method 
 pairwise_m2 <- pairwise.t.test(m2$correct, m2$Condition_Prompt, p.adjust.method = "bonferroni")
 pairwise_m1
 pairwise_m2
+```
+
+```{r}
+# Total words in each condition in the STIMULUS files
+table(d1$Condition_ID)  # should sum to Deep+Superficial in m1
+table(d2$Condition_ID)  # should sum to Deep+Superficial in m2
+
+# Words in m1/m2 that appeared should equal Deep + Superficial counts
+sum(m1$appeared == 1)   # should equal 71 + 91 = 162
+sum(m2$appeared == 1)   # should equal 84 + 86 = 170
+
+# No word should be in both conditions simultaneously
+intersect(d1$Word[d1$Condition_ID == 1], d1$Word[d1$Condition_ID == 2])  # should be character(0)
+intersect(d2$Word[d2$Condition_ID == 1], d2$Word[d2$Condition_ID == 2])  # should be character(0)
+```
+```{r}
+# just for limitations section; Soren's dataset was a bit unbalanced
+# count appearence of words in different conditions in m1 and m2
+table(m1$Condition_Prompt)
+table(m2$Condition_Prompt)
+
+# Check for duplicate words across conditions in d1
+dupes_d1 <- d1$Word[duplicated(d1$Word)]
+dupes_d1  # if any words appear here, that's your problem
+
+# Compare with d2
+dupes_d2 <- d2$Word[duplicated(d2$Word)]
+dupes_d2  # likely character(0)
+
+# See which condition the dupes belong to
+d1[d1$Word %in% dupes_d1, ]
+
+# Check actual condition counts in the stimulus file itself
+table(d1$Condition_ID)
+
+# Compare total unique words per condition
+length(unique(d1$Word[d1$Condition_ID == 1]))
+length(unique(d1$Word[d1$Condition_ID == 2]))
+```
+```{r}
+# check RT differences between conditions in m1 and m2
+#violinplots
+ggplot(m1, aes(x = Condition_Prompt, y = RT)) +
+  geom_violin(fill = "steelblue") +
+  geom_boxplot(width = 0.1) +
+  ggtitle("RT distribution in different conditions in m1") +
+  xlab("Condition Prompt") +
+  ylab("Reaction Time (ms)")
+ggplot(m2, aes(x = Condition_Prompt, y = RT)) +
+  geom_violin(fill = "steelblue") +
+  geom_boxplot(width = 0.1) +
+  ggtitle("RT distribution in different conditions in m2") +
+  xlab("Condition Prompt") +
+  ylab("Reaction Time (ms)")
+
+anova_rt_m1 <- aov(RT ~ Condition_Prompt, data = m1)
+anova_rt_m2 <- aov(RT ~ Condition_Prompt, data = m2)
+anova_rt_m1_summary <- summary(anova_rt_m1)
+anova_rt_m2_summary <- summary(anova_rt_m2)
+anova_rt_m1_summary
+anova_rt_m2_summary
+
+# pairwise comparisons for RT
+pairwise_rt_m1 <- pairwise.t.test(m1$RT, m1$Condition_Prompt, p.adjust.method = "bonferroni")
+pairwise_rt_m2 <- pairwise.t.test(m2$RT, m2$Condition_Prompt, p.adjust.method = "bonferroni")
+pairwise_rt_m1
+pairwise_rt_m2
+```
+
+```{r}
+
 ```
 
