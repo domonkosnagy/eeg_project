@@ -30,9 +30,6 @@ remembered_d2 <- d2$Word[d2$remembered == 1]
 # get indices of trials in d1 and d2 that were not remembered later
 not_remembered_d1 <- d1$Word[d1$remembered == 0]
 not_remembered_d2 <- d2$Word[d2$remembered == 0]
-
-remembered_d1
-not_remembered_d1
 ```
 
 ```{r}
@@ -115,40 +112,6 @@ count_m2_condition <- m2 %>%
 count_m2_condition
 ```
 
-```{r}
-# create a bar plot with SE to show accuracy in different conditions in m1 and m2
-ggplot(accuracy_m1_condition, aes(x = Condition_Prompt, y = accuracy)) +
-  geom_bar(stat = "identity", fill = "steelblue") +
-  geom_errorbar(aes(ymin = accuracy - 1.96 * se, 
-                    ymax = accuracy + 1.96 * se), 
-                width = 0.2) +
-  ggtitle("Accuracy in different conditions in m1") +
-  xlab("Condition Prompt") +
-  ylab("Accuracy")
-ggplot(accuracy_m2_condition, aes(x = Condition_Prompt, y = accuracy)) +
-  geom_bar(stat = "identity", fill = "steelblue") +
-  geom_errorbar(aes(ymin = accuracy - 1.96 * se, 
-                    ymax = accuracy + 1.96 * se), 
-                width = 0.2) +
-  ggtitle("Accuracy in different conditions in m2") +
-  xlab("Condition Prompt") +
-  ylab("Accuracy")
-```
-
-```{r}
-# anovas
-anova_m1 <- aov(correct ~ Condition_Prompt, data = m1)
-anova_m2 <- aov(correct ~ Condition_Prompt, data = m2)
-
-summary(anova_m1)
-summary(anova_m2)
-
-# look at pairwise comparisons
-pairwise_m1 <- pairwise.t.test(m1$correct, m1$Condition_Prompt, p.adjust.method = "bonferroni")
-pairwise_m2 <- pairwise.t.test(m2$correct, m2$Condition_Prompt, p.adjust.method = "bonferroni")
-pairwise_m1
-pairwise_m2
-```
 
 ```{r}
 # Total words in each condition in the STIMULUS files
@@ -163,6 +126,7 @@ sum(m2$appeared == 1)   # should equal 84 + 86 = 170
 intersect(d1$Word[d1$Condition_ID == 1], d1$Word[d1$Condition_ID == 2])  # should be character(0)
 intersect(d2$Word[d2$Condition_ID == 1], d2$Word[d2$Condition_ID == 2])  # should be character(0)
 ```
+
 ```{r}
 # just for limitations section; Soren's dataset was a bit unbalanced
 # count appearence of words in different conditions in m1 and m2
@@ -187,47 +151,117 @@ table(d1$Condition_ID)
 length(unique(d1$Word[d1$Condition_ID == 1]))
 length(unique(d1$Word[d1$Condition_ID == 2]))
 ```
-```{r}
-# check RT differences between conditions in m1 and m2
-#violinplots
-ggplot(m1, aes(x = Condition_Prompt, y = RT)) +
-  geom_violin(fill = "steelblue") +
-  geom_boxplot(width = 0.1) +
-  ggtitle("RT distribution in different conditions in m1") +
-  xlab("Condition Prompt") +
-  ylab("Reaction Time (ms)")
-ggplot(m2, aes(x = Condition_Prompt, y = RT)) +
-  geom_violin(fill = "steelblue") +
-  geom_boxplot(width = 0.1) +
-  ggtitle("RT distribution in different conditions in m2") +
-  xlab("Condition Prompt") +
-  ylab("Reaction Time (ms)")
 
-anova_rt_m1 <- aov(RT ~ Condition_Prompt, data = m1)
-anova_rt_m2 <- aov(RT ~ Condition_Prompt, data = m2)
-anova_rt_m1_summary <- summary(anova_rt_m1)
-anova_rt_m2_summary <- summary(anova_rt_m2)
-anova_rt_m1_summary
-anova_rt_m2_summary
 
-# pairwise comparisons for RT
-pairwise_rt_m1 <- pairwise.t.test(m1$RT, m1$Condition_Prompt, p.adjust.method = "bonferroni")
-pairwise_rt_m2 <- pairwise.t.test(m2$RT, m2$Condition_Prompt, p.adjust.method = "bonferroni")
-pairwise_rt_m1
-pairwise_rt_m2
-```
 
 # Combined 
+
 ```{r}
-library(emmeans)
 data_full <- bind_rows(m1, m2)
+```
 
-anova_full <- aov(correct ~ Condition_Prompt, data = data_full)
-summary(anova_full)
-emmeans(anova_full, pairwise ~ Condition_Prompt, adjust = "bonferroni")
+```{r}
+#run linear regression forRT with Condition_Prompt as predictor
+linear_model <- glmer((RT) ~ Condition_Prompt + (1|ID), data = data_full)
+summary(linear_model)
 
-anova_rt <- aov(RT ~ Condition_Prompt, data = data_full)
-summary(anova_rt)
-emmeans(anova_rt, pairwise ~ Condition_Prompt, adjust = "bonferroni")
+# 1. Linearity & homoscedasticity — residuals vs fitted
+plot(linear_model, which = 1)
+# Want: points scattered randomly around horizontal line at 0
+# Problem if: funnel shape (heteroscedasticity) or curve (non-linearity)
+
+# 2. Normality of residuals
+plot(linear_model, which = 2)  # Q-Q plot
+# Want: points close to diagonal line
+# Also formally test:
+shapiro.test(residuals(linear_model))
+# Want: p > 0.05 (not significantly non-normal)
+
+# 3. Homoscedasticity formally
+library(lmtest)
+bptest(linear_model)  # Breusch-Pagan test
+# Want: p > 0.05
+
+# 4. Independence — check for outliers/influential points
+plot(linear_model, which = 4)  # Cook's distance
+# Want: no points above 0.5 or 1.0
+
+# 5. Quick visual check of RT distribution
+hist(data_full$RT, breaks = 30, main = "RT distribution")
+# RT is often right-skewed — if so, consider log transform: lm(log(RT) ~ ...)
+```
+
+```{r}
+# Log transform RT
+data_full <- data_full[data_full$RT > 0.20, ]
+data_full <- data_full[data_full$RT < 3, ]
+data_full$log_RT <- log(data_full$RT)
+
+# Check it looks better
+hist(data_full$log_RT, breaks = 30, main = "Log RT distribution")
+
+# Rerun model on log RT
+linear_model <- glmer(log_RT ~ Condition_Prompt + (1|ID), data = data_full)
+summary(linear_model)
+
+# Check assumptions again for log RT model
+plot(linear_model, which = 1)  # residuals vs fitted
+plot(linear_model, which = 2)  # Q-Q plot
+shapiro.test(residuals(linear_model))
+bptest(linear_model)  # Breusch-Pagan test
+plot(linear_model, which = 4)  # Cook's distance
+```
+
+
+```{r}
+library(lme4)
+#run logistic regression for accuracy with Condition_Prompt as predictor
+logistic_model <- glmer(correct ~ Condition_Prompt + (1|ID), data = data_full, family = binomial)
+summary(logistic_model)
+```
+
+
+```{r}
+count_condition <- data_full %>%
+  group_by(Condition_Prompt) %>%
+  summarise(
+    correct_count = sum(correct),
+    incorrect_count = n() - sum(correct)
+  )
+count_condition
+
+# change data type of correct column to numeric
+data_full$correct <- as.numeric(data_full$correct)
+# calculate accuracy 
+accuracy_m1 <- mean(data_full$correct)
+
+accuracy_condition <- data_full %>%
+  group_by(Condition_Prompt) %>%
+  summarise(
+    n = n(),
+    accuracy = mean(correct),
+    se = sqrt(accuracy * (1 - accuracy) / n)
+  )
+accuracy_condition
+```
+
+
+```{r}
+ggplot(accuracy_condition, aes(x = Condition_Prompt, y = accuracy)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  geom_errorbar(aes(ymin = accuracy - 1.96 * se, 
+                    ymax = accuracy + 1.96 * se), 
+                width = 0.2) +
+  ggtitle("Accuracy in different conditions") +
+  xlab("Condition Prompt") +
+  ylab("Accuracy")
+
+#violinplots
+ggplot(data_full, aes(x = Condition_Prompt, y = RT)) +
+  geom_violin(fill = "steelblue") +
+  geom_boxplot(width = 0.1) +
+  ggtitle("RT distribution in different conditions") +
+  xlab("Condition Prompt") +
+  ylab("Reaction Time (ms)")
 ```
 
