@@ -19,6 +19,50 @@ m2$appeared <- ifelse(m2$Word %in% d2$Word, 1, 0)
 # create a new column in m1 and m2 to indicate if word has appeared in Condition_Prompt 1 or 2 or has not appeared; d1 and d2 respectively
 m1$Condition_Prompt <- ifelse(m1$Word %in% d1$Word[d1$Condition_ID == 1], "Superficial", ifelse(m1$Word %in% d1$Word[d1$Condition_ID == 2], "Deep", "Not appeared"))
 m2$Condition_Prompt <- ifelse(m2$Word %in% d2$Word[d2$Condition_ID == 1], "Superficial", ifelse(m2$Word %in% d2$Word[d2$Condition_ID == 2], "Deep", "Not appeared"))
+
+#create a column in d1 and d2 to indicate if word was later remembered in m1 and m2 respectively
+d1$remembered <- ifelse(d1$Word %in% m1$Word[m1$Response == "y"], 1, 0)
+d2$remembered <- ifelse(d2$Word %in% m2$Word[m2$Response == "y"], 1, 0)
+
+# get row number of trials in d1 and d2 that were later remembered
+remembered_d1 <- d1$Word[d1$remembered == 1]
+remembered_d2 <- d2$Word[d2$remembered == 1]
+# get indices of trials in d1 and d2 that were not remembered later
+not_remembered_d1 <- d1$Word[d1$remembered == 0]
+not_remembered_d2 <- d2$Word[d2$remembered == 0]
+
+remembered_d1
+not_remembered_d1
+```
+
+```{r}
+setwd("/Users/nagydomonkos/Desktop/neuroscience/4/eeg_project/EEG_data")
+t1 <- read.csv("triggers_psoren.csv")
+t2 <- read.csv("triggers_pwilliam.csv")
+
+#create a new column in t1 and t2 to indicate if word was later remembered based on d1 and d2 respectively. only put 1 or 0 if trigger_code is 4 or 5
+t1$remembered <- ifelse(t1$trigger_code %in% c(4, 5) & t1$word %in% remembered_d1, 1, ifelse(t1$trigger_code %in% c(4, 5) & t1$word %in% not_remembered_d1, 0, NA))
+t2$remembered <- ifelse(t2$trigger_code %in% c(4, 5) & t2$word %in% remembered_d2, 1, ifelse(t2$trigger_code %in% c(4, 5) & t2$word %in% not_remembered_d2, 0, NA))
+
+#get csvs
+write.csv(t1, "triggers_psoren_with_remembered.csv", row.names = FALSE)
+write.csv(t2, "triggers_pwilliam_with_remembered.csv", row.names = FALSE)
+
+#change trigger code from 4 to 40 if remembered is 0 and to 41 if remembered is 1 in t1 and t2; change trigger code from 5 to 50 if remembered is 0 and to 51 if remembered is 1 in t1 and t2
+t1$trigger_code <- ifelse(t1$trigger_code == 4 & t1$remembered == 0, 40, ifelse(t1$trigger_code == 4 & t1$remembered == 1, 41, ifelse(t1$trigger_code == 5 & t1$remembered == 0, 50, ifelse(t1$trigger_code == 5 & t1$remembered == 1, 51, t1$trigger_code))))
+t2$trigger_code <- ifelse(t2$trigger_code == 4 & t2$remembered == 0, 40, ifelse(t2$trigger_code == 4 & t2$remembered == 1, 41, ifelse(t2$trigger_code == 5 & t2$remembered == 0, 50, ifelse(t2$trigger_code == 5 & t2$remembered == 1, 51, t2$trigger_code))))
+write.csv(t1, "triggers_psoren_with_remembered.csv", row.names = FALSE)
+write.csv(t2, "triggers_pwilliam_with_remembered.csv", row.names = FALSE)
+
+#get index of rows that have 
+index_41_t1 <- which(t1$trigger_code == 41)
+index_51_t1 <- which(t1$trigger_code == 51)
+index_41_t2 <- which(t2$trigger_code == 41)
+index_51_t2 <- which(t2$trigger_code == 51)
+index_41_t1
+index_51_t1
+index_41_t2
+index_51_t2
 ```
 
 ```{r}
@@ -53,7 +97,24 @@ accuracy_m2_condition <- m2 %>%
 
 accuracy_m1_condition
 accuracy_m2_condition
+# get count of correct and incorrect responses in different conditions in m1 and m2
+count_m1_condition <- m1 %>%
+  group_by(Condition_Prompt) %>%
+  summarise(
+    correct_count = sum(correct),
+    incorrect_count = n() - sum(correct)
+  )
+count_m1_condition
+
+count_m2_condition <- m2 %>%
+  group_by(Condition_Prompt) %>%
+  summarise(
+    correct_count = sum(correct),
+    incorrect_count = n() - sum(correct)
+  )
+count_m2_condition
 ```
+
 ```{r}
 # create a bar plot with SE to show accuracy in different conditions in m1 and m2
 ggplot(accuracy_m1_condition, aes(x = Condition_Prompt, y = accuracy)) +
@@ -79,11 +140,8 @@ ggplot(accuracy_m2_condition, aes(x = Condition_Prompt, y = accuracy)) +
 anova_m1 <- aov(correct ~ Condition_Prompt, data = m1)
 anova_m2 <- aov(correct ~ Condition_Prompt, data = m2)
 
-anova_m1_summary <- summary(anova_m1)
-anova_m2_summary <- summary(anova_m2)
-
-anova_m1_summary
-anova_m2_summary
+summary(anova_m1)
+summary(anova_m2)
 
 # look at pairwise comparisons
 pairwise_m1 <- pairwise.t.test(m1$correct, m1$Condition_Prompt, p.adjust.method = "bonferroni")
@@ -159,7 +217,17 @@ pairwise_rt_m1
 pairwise_rt_m2
 ```
 
+# Combined 
 ```{r}
+library(emmeans)
+data_full <- bind_rows(m1, m2)
 
+anova_full <- aov(correct ~ Condition_Prompt, data = data_full)
+summary(anova_full)
+emmeans(anova_full, pairwise ~ Condition_Prompt, adjust = "bonferroni")
+
+anova_rt <- aov(RT ~ Condition_Prompt, data = data_full)
+summary(anova_rt)
+emmeans(anova_rt, pairwise ~ Condition_Prompt, adjust = "bonferroni")
 ```
 
