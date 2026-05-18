@@ -160,58 +160,6 @@ length(unique(d1$Word[d1$Condition_ID == 2]))
 data_full <- bind_rows(m1, m2)
 ```
 
-```{r}
-#run linear regression forRT with Condition_Prompt as predictor
-linear_model <- glmer((RT) ~ Condition_Prompt + (1|ID), data = data_full)
-summary(linear_model)
-
-# 1. Linearity & homoscedasticity — residuals vs fitted
-plot(linear_model, which = 1)
-# Want: points scattered randomly around horizontal line at 0
-# Problem if: funnel shape (heteroscedasticity) or curve (non-linearity)
-
-# 2. Normality of residuals
-plot(linear_model, which = 2)  # Q-Q plot
-# Want: points close to diagonal line
-# Also formally test:
-shapiro.test(residuals(linear_model))
-# Want: p > 0.05 (not significantly non-normal)
-
-# 3. Homoscedasticity formally
-library(lmtest)
-bptest(linear_model)  # Breusch-Pagan test
-# Want: p > 0.05
-
-# 4. Independence — check for outliers/influential points
-plot(linear_model, which = 4)  # Cook's distance
-# Want: no points above 0.5 or 1.0
-
-# 5. Quick visual check of RT distribution
-hist(data_full$RT, breaks = 30, main = "RT distribution")
-# RT is often right-skewed — if so, consider log transform: lm(log(RT) ~ ...)
-```
-
-```{r}
-# Log transform RT
-data_full <- data_full[data_full$RT > 0.20, ]
-data_full <- data_full[data_full$RT < 3, ]
-data_full$log_RT <- log(data_full$RT)
-
-# Check it looks better
-hist(data_full$log_RT, breaks = 30, main = "Log RT distribution")
-
-# Rerun model on log RT
-linear_model <- glmer(log_RT ~ Condition_Prompt + (1|ID), data = data_full)
-summary(linear_model)
-
-# Check assumptions again for log RT model
-plot(linear_model, which = 1)  # residuals vs fitted
-plot(linear_model, which = 2)  # Q-Q plot
-shapiro.test(residuals(linear_model))
-bptest(linear_model)  # Breusch-Pagan test
-plot(linear_model, which = 4)  # Cook's distance
-```
-
 
 ```{r}
 library(lme4)
@@ -256,12 +204,63 @@ ggplot(accuracy_condition, aes(x = Condition_Prompt, y = accuracy)) +
   xlab("Condition Prompt") +
   ylab("Accuracy")
 
-#violinplots
-ggplot(data_full, aes(x = Condition_Prompt, y = RT)) +
-  geom_violin(fill = "steelblue") +
-  geom_boxplot(width = 0.1) +
-  ggtitle("RT distribution in different conditions") +
-  xlab("Condition Prompt") +
-  ylab("Reaction Time (ms)")
+
+# Get model predictions with confidence intervals
+newdata <- data.frame(
+  Condition_Prompt = unique(data_full$Condition_Prompt)
+)
+
+# Predict on log-odds scale then convert to probability
+pred <- predict(logistic_model, newdata = newdata, 
+                re.form = NA,        # population-level estimates only (no random effects)
+                type = "link", 
+                se.fit = TRUE)
+
+newdata$estimate <- plogis(pred$fit)
+newdata$lower    <- plogis(pred$fit - 1.96 * pred$se.fit)
+newdata$upper    <- plogis(pred$fit + 1.96 * pred$se.fit)
+
+# Plot
+ggplot() +
+  # Jittered raw data points at 0 and 1
+  geom_jitter(
+    data = data_full,
+    aes(x = Condition_Prompt, y = correct, colour = Condition_Prompt),
+    width = 0.35, height = 0.02,   # small vertical jitter to separate overlapping points
+    alpha = 0.4, size = 1.2
+  ) +
+  # Model estimates with 95% CI errorbars
+  geom_point(
+    data = newdata,
+    aes(x = Condition_Prompt, y = estimate),
+    size = 4, colour = "black"
+  ) +
+  geom_line(data = newdata,
+            aes(x = Condition_Prompt, y = estimate, group = 1),
+            linewidth = 1, linetype = "dashed") +
+  geom_errorbar(
+    data = newdata,
+    aes(x = Condition_Prompt, ymin = lower, ymax = upper),
+    width = 0.2, linewidth = 0.8, colour = "black"
+  ) +
+  scale_y_continuous(
+    breaks = c(0, 0.25, 0.5, 0.75, 1),
+    labels = c("0\n(Forgotten)", "0.25", "0.50", "0.75", "1\n(Remembered)")
+  ) +
+  scale_colour_manual(values = c("steelblue", "tomato", "seagreen")) +
+  labs(
+    x = "Condition",
+    y = "P(Remembered)",
+    title = "Recognition accuracy by condition",
+    subtitle = "Points = raw trials (jittered) | Dot + errorbar = model estimate ± 95% CI",
+    colour = "Condition"
+  ) +
+  theme_classic() +
+  theme(legend.position = "none")
 ```
+
+
+
+
+
 
