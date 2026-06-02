@@ -1,0 +1,164 @@
+"ID","Age","Gender","Condition_ID","Condition_Prompt","Word","Response","Reaction_time","remembered"
+"soren",23,"male",1,"Includes 'A'?","crayfish","y",0.881234800006496,1
+"soren",23,"male",2,"Living?","deer","y",1.24149879999459,0
+"soren",23,"male",1,"Includes 'A'?","armadillo","y",0.86712599999737,1
+"soren",23,"male",1,"Includes 'A'?","button","n",0.730103000008967,0
+"soren",23,"male",1,"Includes 'A'?","flashlight","n",1.0950707999873,1
+"soren",23,"male",1,"Includes 'A'?","flint","n",1.16094450000674,0
+"soren",23,"male",2,"Living?","squid","y",0.859618700022111,1
+"soren",23,"male",1,"Includes 'A'?","chair","y",1.02945080000791,1
+"soren",23,"male",1,"Includes 'A'?","plant","y",0.660185499989893,0
+"soren",23,"male",2,"Living?","tortoise","y",0.717717000021366,1
+"soren",23,"male",2,"Living?","gravel","n",0.758772300003329,1
+"soren",23,"male",2,"Living?","garage","n",1.1122580000083,1
+"soren",23,"male",2,"Living?","raccoon","y",0.599688299989793,1
+"soren",23,"male",1,"Includes 'A'?","fuse","n",0.950741400010884,1
+"soren",23,"male",2,"Living?","rattlesnake","y",1.25590390001889,1
+"soren",23,"male",2,"Living?","shark","y",0.784469599981094,1
+"soren",23,"male",1,"Includes 'A'?","chameleon","y",1.84770600000047,1
+"soren",23,"male",1,"Includes 'A'?","bowl","n",1.07435550002265,1
+"soren",23,"male",1,"Includes 'A'?","anchor","y",1.15513289999217,0
+"soren",23,"male",1,"Includes 'A'?","bicycle","n",0.905142900010105,0
+"soren",23,"male",2,"Living?","rope","n",1.38245159998769,0
+"soren",23,"male",2,"Living?","satellite","n",0.868078500003321,1
+"soren",23,"male",1,"Includes 'A'?","fish","n",1.67743899999186,1
+"soren",23,"male",1,"Includes 'A'?","duck","n",1.18048569999519,0
+"soren",23,"male",1,"Includes 'A'?","fox","n",0.737349800008815,1
+"soren",23,"male",1,"Includes 'A'?","cargo","y",1.1717013999878,0
+"soren",23,"male",2,"Living?","moth","n",1.01927359998808,1
+"soren",23,"male",1,"Includes 'A'?","heron","y",0.950125000003027,1
+"soren",23,"male",1,"Includes 'A'?","camera","y",0.952452500001527,0
+"soren",23,"male",2,"Living?","robin","y",1.33462589999544,1
+"soren",23,"male",2,"Living?","phone","n",1.31986119999783,0
+"soren",23,"male",2,"Living?","salmon","y",0.752922600018792,1
+"soren",23,"male",1,"Includes 'A'?","flag","y",1.00303689998691,0
+"soren",23,"male",2,"Living?","hose","n",0.943548699986422,1
+"soren",23,"male",1,"Includes 'A'?","fossil","n",1.46502969998983,1
+"soren",23,"male",1,"Includes 'A'?","dingo","n",0.82961419998901,1
+"soren",23,"male",1,"Includes 'A'?","bamboo","y",1.22872660000576,1
+"soren",23,"male",2,"Living?","snipe","n",1.62469720002264,1
+"soren",23,"male",2,"Living?","tent","n",0.851535399997374,0
+"soren",23,"male",1,"Includes 'A'?","ant","y",0.882189399999334,0
+"soren",23,"male",2,"Living?","spider","y",0.606212599988794,1
+"soren",23,"male",1,"Includes 'A'?","fern","n",1.13103729998693,1
+"soren",23,"male",2,"Living?","koala","y",0.589106500003254,1
+"soren",23,"male",1,"Includes 'A'?","fish","n",1.04807320001419,1
+"soren",23,"male",1,"Includes 'A'?","orangutan","y",1.04506620002212,1
+"soren",23,"male",2,"Living?","scarecrow","y",0.689017999975476,1
+"soren",23,"male",2,"Living?","lens","n",0.65569859999232,1
+"soren",23,"male",1,"Includes 'A'?","chicken","y",0.65612629998941,1
+"soren",23,"male",2,"Living?","knife","n",0.891287899983581,1
+"soren",23,"male",1,"Includes 'A'?","carpet","y",0.850864100008039,0
+"soren",23,"male",1,"Includes 'A'?","cobra","y",1.09651199998916,0
+"soren",23,"male",2,"Living?","slug","n",1.12447260000044,1
+"soren",23,"male",2,"Living?","lava","n",0.99160359997768,1
+"soren",23,"male",2,"Living?","tool","n",0.955711499991594,1
+"soren",23,"male",1,"Includes 'A'?","cable","y",0.928567900002236,0
+"soren",23,"male",2,"Living?","tick","y",0.883215399982873,1
+"soren",23,"male",1,"Includes 'A'?","bird","n",1.24959419999504,1
+"soren",23,"male",1,"Includes 'A'?","dolphin","n",1.16009479999775,0
+"soren",23,"male",1,"Includes 'A'?","firefly","n",0.999723899993114,0
+"soren",23,"male",2,"Living?","ladybug","y",1.00791139999637,1
+"soren",23,"male",1,"Includes 'A'?","grasshopper","y",0.816664699988905,0
+"soren",23,"male",2,"Living?","sand","n",0.899771299998974,0
+"soren",23,"male",1,"Includes 'A'?","bluebell","n",0.769132099987473,0
+"soren",23,"male",2,"Living?","ray","y",1.39791830000468,1
+"soren",23,"male",1,"Includes 'A'?","crow","n",1.11468619998777,0
+"soren",23,"male",2,"Living?","urn","n",1.06578759997501,1
+"soren",23,"male",1,"Includes 'A'?","coin","n",0.811727599997539,0
+"soren",23,"male",1,"Includes 'A'?","compass","y",0.680776699999114,1
+"soren",23,"male",2,"Living?","wolf","y",0.675503600010416,1
+"soren",23,"male",2,"Living?","mop","n",0.966073299990967,0
+"soren",23,"male",1,"Includes 'A'?","elk","n",0.738103000010597,1
+"soren",23,"male",2,"Living?","impala","y",1.21445420000236,1
+"soren",23,"male",1,"Includes 'A'?","clock","n",0.850252099975478,0
+"soren",23,"male",1,"Includes 'A'?","frog","n",0.567996600002516,1
+"soren",23,"male",1,"Includes 'A'?","hook","n",0.885845900018467,0
+"soren",23,"male",1,"Includes 'A'?","book","n",0.819478799996432,0
+"soren",23,"male",2,"Living?","stamp","n",1.1608798999805,1
+"soren",23,"male",1,"Includes 'A'?","castle","y",1.01764039997943,0
+"soren",23,"male",2,"Living?","table","n",1.36434959998587,0
+"soren",23,"male",2,"Living?","orb","n",1.01545310000074,1
+"soren",23,"male",2,"Living?","marlin","y",1.21028589998605,1
+"soren",23,"male",1,"Includes 'A'?","cassette","y",1.46958460001042,1
+"soren",23,"male",2,"Living?","larvae","y",1.04160249998677,0
+"soren",23,"male",1,"Includes 'A'?","alarm","y",0.613888599997154,1
+"soren",23,"male",1,"Includes 'A'?","attic","y",0.849351699987892,1
+"soren",23,"male",1,"Includes 'A'?","bucket","n",1.6901592000213,0
+"soren",23,"male",1,"Includes 'A'?","flame","y",0.733456599991769,1
+"soren",23,"male",2,"Living?","oyster","y",0.755835799995111,0
+"soren",23,"male",2,"Living?","kitchen","n",0.773044799978379,1
+"soren",23,"male",2,"Living?","wallet","n",1.18609319999814,1
+"soren",23,"male",1,"Includes 'A'?","brush","n",1.23168180001085,0
+"soren",23,"male",2,"Living?","penguin","y",0.901675000000978,1
+"soren",23,"male",1,"Includes 'A'?","cave","y",0.67225440000766,0
+"soren",23,"male",1,"Includes 'A'?","fork","n",0.742379100003745,0
+"soren",23,"male",1,"Includes 'A'?","hummingbird","n",0.916873700014548,0
+"soren",23,"male",1,"Includes 'A'?","bridge","n",0.690467900014482,0
+"soren",23,"male",2,"Living?","torch","n",0.673798899981193,0
+"soren",23,"male",1,"Includes 'A'?","gazelle","y",0.777701800019713,1
+"soren",23,"male",2,"Living?","panther","y",1.16586249999818,0
+"soren",23,"male",1,"Includes 'A'?","arch","y",0.847634999983711,1
+"soren",23,"male",2,"Living?","jaguar","y",0.784429100021953,1
+"soren",23,"male",1,"Includes 'A'?","butterfly","n",0.815826899983222,1
+"soren",23,"male",1,"Includes 'A'?","goose","n",0.940013399987947,0
+"soren",23,"male",2,"Living?","tiger","y",0.764371199999005,1
+"soren",23,"male",1,"Includes 'A'?","box","n",0.774524300009944,0
+"soren",23,"male",2,"Living?","paper","n",1.08034249997581,1
+"soren",23,"male",2,"Living?","iguana","y",1.21431840001605,1
+"soren",23,"male",2,"Living?","newt","n",1.20508530002553,1
+"soren",23,"male",1,"Includes 'A'?","fabric","y",0.707831400010036,0
+"soren",23,"male",1,"Includes 'A'?","cork","n",0.708048100001179,0
+"soren",23,"male",2,"Living?","magpie","n",1.1209278999886,1
+"soren",23,"male",1,"Includes 'A'?","blanket","y",0.723889499990037,0
+"soren",23,"male",1,"Includes 'A'?","axle","y",1.36769039998762,0
+"soren",23,"male",2,"Living?","octopus","y",1.05855700001121,1
+"soren",23,"male",2,"Living?","watch","n",1.56404959998326,1
+"soren",23,"male",2,"Living?","lamp","n",0.78888239999651,1
+"soren",23,"male",2,"Living?","kangaroo","y",0.947282900015125,1
+"soren",23,"male",1,"Includes 'A'?","grill","n",0.735465600009775,0
+"soren",23,"male",1,"Includes 'A'?","cod","n",1.2710197000124,0
+"soren",23,"male",1,"Includes 'A'?","cup","n",1.18869599999744,0
+"soren",23,"male",1,"Includes 'A'?","emu","n",1.33441109998967,0
+"soren",23,"male",1,"Includes 'A'?","candle","y",0.953897000028519,0
+"soren",23,"male",1,"Includes 'A'?","daisy","y",1.16673240001546,0
+"soren",23,"male",2,"Living?","wasp","y",1.42648610001197,1
+"soren",23,"male",2,"Living?","granite","n",0.732670899975346,1
+"soren",23,"male",2,"Living?","anteater","y",1.09480179997627,1
+"soren",23,"male",1,"Includes 'A'?","bottle","n",0.776703800016548,0
+"soren",23,"male",1,"Includes 'A'?","catfish","y",1.03195199999027,1
+"soren",23,"male",1,"Includes 'A'?","glove","n",0.930947200016817,0
+"soren",23,"male",2,"Living?","platypus","y",0.707694499986246,1
+"soren",23,"male",1,"Includes 'A'?","bison","n",0.891862100019353,0
+"soren",23,"male",1,"Includes 'A'?","bandage","y",0.935226800007513,1
+"soren",23,"male",1,"Includes 'A'?","barrel","y",0.780581800005166,1
+"soren",23,"male",2,"Living?","palace","n",1.02630120000686,1
+"soren",23,"male",1,"Includes 'A'?","clover","n",0.83609460000298,1
+"soren",23,"male",1,"Includes 'A'?","falcon","y",0.790591199998744,0
+"soren",23,"male",1,"Includes 'A'?","flamingo","y",0.958722500014119,0
+"soren",23,"male",2,"Living?","shard","n",1.37192330000107,1
+"soren",23,"male",1,"Includes 'A'?","bee","n",1.51606589998119,1
+"soren",23,"male",1,"Includes 'A'?","brick","n",1.1502816999855,1
+"soren",23,"male",2,"Living?","walrus","y",0.694483400002355,0
+"soren",23,"male",1,"Includes 'A'?","gun","n",1.58176729999832,0
+"soren",23,"male",2,"Living?","sandstone","n",1.82931739999913,0
+"soren",23,"male",2,"Living?","maze","n",1.42300710000563,0
+"soren",23,"male",1,"Includes 'A'?","flower","n",1.02900209999643,1
+"soren",23,"male",1,"Includes 'A'?","bell","n",1.0187723999843,0
+"soren",23,"male",1,"Includes 'A'?","cheetah","y",1.40392000001157,0
+"soren",23,"male",2,"Living?","lion","y",0.856719000003068,1
+"soren",23,"male",2,"Living?","pen","n",0.788061899977038,0
+"soren",23,"male",1,"Includes 'A'?","charcoal","y",0.89867029999732,0
+"soren",23,"male",1,"Includes 'A'?","backpack","y",1.27185690001352,0
+"soren",23,"male",1,"Includes 'A'?","baboon","y",1.12768659999711,1
+"soren",23,"male",2,"Living?","ledge","n",0.766458999976749,1
+"soren",23,"male",2,"Living?","hyena","y",1.62533999999869,1
+"soren",23,"male",2,"Living?","marble","n",1.04949169998872,1
+"soren",23,"male",1,"Includes 'A'?","horse","y",1.23005020001438,0
+"soren",23,"male",2,"Living?","satchel","n",0.877913400006946,1
+"soren",23,"male",2,"Living?","rabbit","y",1.02552240001387,1
+"soren",23,"male",2,"Living?","truck","n",1.27158299999428,0
+"soren",23,"male",1,"Includes 'A'?","eagle","y",1.07448950002436,1
+"soren",23,"male",1,"Includes 'A'?","coyote","n",0.987159000011161,0
+"soren",23,"male",1,"Includes 'A'?","canvas","y",0.909576899983222,1
+"soren",23,"male",1,"Includes 'A'?","basket","y",1.01597189999302,0

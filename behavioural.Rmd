@@ -50,16 +50,6 @@ t1$trigger_code <- ifelse(t1$trigger_code == 4 & t1$remembered == 0, 40, ifelse(
 t2$trigger_code <- ifelse(t2$trigger_code == 4 & t2$remembered == 0, 40, ifelse(t2$trigger_code == 4 & t2$remembered == 1, 41, ifelse(t2$trigger_code == 5 & t2$remembered == 0, 50, ifelse(t2$trigger_code == 5 & t2$remembered == 1, 51, t2$trigger_code))))
 write.csv(t1, "triggers_psoren_with_remembered.csv", row.names = FALSE)
 write.csv(t2, "triggers_pwilliam_with_remembered.csv", row.names = FALSE)
-
-#get index of rows that have 
-index_41_t1 <- which(t1$trigger_code == 41)
-index_51_t1 <- which(t1$trigger_code == 51)
-index_41_t2 <- which(t2$trigger_code == 41)
-index_51_t2 <- which(t2$trigger_code == 51)
-index_41_t1
-index_51_t1
-index_41_t2
-index_51_t2
 ```
 
 ```{r}
@@ -82,14 +72,14 @@ accuracy_m1_condition <- m1 %>%
   summarise(
     n = n(),
     accuracy = mean(correct),
-    se = sqrt(accuracy * (1 - accuracy) / n)  # SE for a proportion
+    se = sqrt(accuracy * (1 - accuracy) / n)  
   )
 accuracy_m2_condition <- m2 %>%
   group_by(Condition_Prompt) %>%
   summarise(
     n = n(),
     accuracy = mean(correct),
-    se = sqrt(accuracy * (1 - accuracy) / n)  # SE for a proportion
+    se = sqrt(accuracy * (1 - accuracy) / n)
   )
 
 accuracy_m1_condition
@@ -126,34 +116,6 @@ sum(m2$appeared == 1)   # should equal 84 + 86 = 170
 intersect(d1$Word[d1$Condition_ID == 1], d1$Word[d1$Condition_ID == 2])  # should be character(0)
 intersect(d2$Word[d2$Condition_ID == 1], d2$Word[d2$Condition_ID == 2])  # should be character(0)
 ```
-
-```{r}
-# just for limitations section; Soren's dataset was a bit unbalanced
-# count appearence of words in different conditions in m1 and m2
-table(m1$Condition_Prompt)
-table(m2$Condition_Prompt)
-
-# Check for duplicate words across conditions in d1
-dupes_d1 <- d1$Word[duplicated(d1$Word)]
-dupes_d1  # if any words appear here, that's your problem
-
-# Compare with d2
-dupes_d2 <- d2$Word[duplicated(d2$Word)]
-dupes_d2  # likely character(0)
-
-# See which condition the dupes belong to
-d1[d1$Word %in% dupes_d1, ]
-
-# Check actual condition counts in the stimulus file itself
-table(d1$Condition_ID)
-
-# Compare total unique words per condition
-length(unique(d1$Word[d1$Condition_ID == 1]))
-length(unique(d1$Word[d1$Condition_ID == 2]))
-```
-
-
-
 # Combined 
 
 ```{r}
@@ -166,6 +128,7 @@ library(lme4)
 #run logistic regression for accuracy with Condition_Prompt as predictor
 logistic_model <- glmer(correct ~ Condition_Prompt + (1|ID), data = data_full, family = binomial)
 summary(logistic_model)
+
 ```
 
 
@@ -259,8 +222,97 @@ ggplot() +
   theme(legend.position = "none")
 ```
 
+```{r}
+data_full_t <- bind_rows(t1, t2)
 
+# change data type of correct column to numeric
+data_full_t$rt <- as.numeric(data_full_t$rt)
 
+#create a new column in data_full_t to indicate if resp_y or resp_n was given after cond1_label or cond_label 2. if trigger code is 2 two rows above is cond1_label and if trigger code is 3 two rows above is cond2_label. rename yes and no responses (6 and 5) to 26 and 25 respectively in data_full_t, same for yes and no responses (6 and 5) to 36 and 35 respectively in data_full_t; only change if they are two rows below cond1_label or cond2_label
+data_full_t$trigger_code <- ifelse(
+  (data_full_t$trigger_code == 6 & lag(data_full_t$trigger_code, n = 2) == 2) | 
+    (data_full_t$trigger_code == 6 & lag(data_full_t$trigger_code, n = 2) == 3), 
+  ifelse(lag(data_full_t$trigger_code, n = 2) == 2, 26, 36), 
+  ifelse(
+    (data_full_t$trigger_code == 7 & lag(data_full_t$trigger_code, n = 2) == 2) | 
+      (data_full_t$trigger_code == 7 & lag(data_full_t$trigger_code, n = 2) == 3), 
+    ifelse(lag(data_full_t$trigger_code, n = 2) == 2, 27, 37), 
+    data_full_t$trigger_code
+  )
+)
+data_full_t
+
+# get combined means of rt for trigger codes 26 and 25; 36 and 35 in data_full_t
+rt_summary <- data_full_t %>%
+  filter(trigger_code %in% c(27, 26, 37, 36)) %>%
+  group_by(trigger_code) %>%
+  summarise(
+    mean_rt = mean(rt, na.rm = TRUE),
+    se_rt = sd(rt, na.rm = TRUE) / sqrt(n())
+  )
+rt_summary
+# combine 26 and 27 into one condition, and 36 and 37 into another condition in rt_summary
+rt_summary <- rt_summary %>%
+  mutate(
+    condition = case_when(
+      trigger_code %in% c(26, 27) ~ "Condition 1",
+      trigger_code %in% c(36, 37) ~ "Condition 2",
+      TRUE ~ NA_character_
+    )
+  ) %>%
+  group_by(condition) %>%
+  summarise(
+    mean_rt = mean(mean_rt, na.rm = TRUE),
+    se_rt = sqrt(sum(se_rt^2, na.rm = TRUE)) / n()  # Combine SEs
+  )
+rt_summary
+
+ggplot(rt_summary, aes(x = condition, y = mean_rt)) +
+  geom_bar(stat = "identity", fill = "steelblue", width = 0.5) +
+  geom_errorbar(aes(ymin = mean_rt - se_rt, ymax = mean_rt + se_rt), width = 0.2) +
+  ggtitle("Mean RT by Condition") +
+  xlab("Condition") +
+  ylab("Mean RT (ms)")
+```
+
+```{r}
+#change delimiter to semicolon
+library(readr)
+
+words <- read_delim("word_dataset.csv", delim = ";")
+#make a new empty column in data_full_t to indicate if response is correct based on words dataset
+
+#if condition is 1 and contains_a is 1 in words and response is 26 in data_full_t, then correct, if condition is 1 and contains_a is 0 in words and response is 27 in data_full_t, then correct, if condition is 2 and living is 1 in words and response is 36 in data_full_t, then correct, if condition is 2 and living is 0 in words and response is 37 in data_full_t, then correct, else incorrect. 
+data_full_t$correct <- ifelse(
+  (data_full_t$trigger_code == 26 & words$contains_a[match(data_full_t$word, words$word)] == 1) |
+    (data_full_t$trigger_code == 27 & words$contains_a[match(data_full_t$word, words$word)] == 0) |
+    (data_full_t$trigger_code == 36 & words$living[match(data_full_t$word, words$word)] == 1) |
+    (data_full_t$trigger_code == 37 & words$living[match(data_full_t$word, words$word)] == 0),
+  1, 0
+)
+
+#get accuracy for each condition in data_full_t and combine 26 and 27 into one condition, and 36 and 37 into another condition in accuracy_t
+accuracy_t <- data_full_t %>%
+  filter(trigger_code %in% c(26, 27, 36, 37)) %>%
+  group_by(trigger_code) %>%
+  summarise(
+    accuracy = mean(correct, na.rm = TRUE),
+    se = sqrt(accuracy * (1 - accuracy) / n())
+  ) %>%
+  mutate(
+    condition = case_when(
+      trigger_code %in% c(26, 27) ~ "Condition 1",
+      trigger_code %in% c(36, 37) ~ "Condition 2",
+      TRUE ~ NA_character_
+    )
+  ) %>%
+  group_by(condition) %>%
+  summarise(
+    accuracy = mean(accuracy, na.rm = TRUE),
+    se = sqrt(sum(se^2, na.rm = TRUE)) / n()  # Combine SEs
+  )
+accuracy_t
+```
 
 
 

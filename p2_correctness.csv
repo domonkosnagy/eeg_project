@@ -1,0 +1,172 @@
+"ID","Age","Gender","Condition_ID","Condition_Prompt","Word","Response","Reaction_time","remembered"
+"william",24,"male",2,"Living?","sandstone","n",0.713621100410819,1
+"william",24,"male",2,"Living?","oyster","y",0.704154498875141,0
+"william",24,"male",1,"Includes 'A'?","cork","n",0.590568700805306,0
+"william",24,"male",1,"Includes 'A'?","compass","y",0.585639100521803,1
+"william",24,"male",1,"Includes 'A'?","carpet","y",0.612872000783682,0
+"william",24,"male",1,"Includes 'A'?","bucket","n",0.775267399847507,0
+"william",24,"male",2,"Living?","tortoise","n",0.627205299213529,1
+"william",24,"male",2,"Living?","moth","y",0.588869199156761,1
+"william",24,"male",1,"Includes 'A'?","bridge","n",1.15921900048852,1
+"william",24,"male",2,"Living?","squid","y",0.627901600673795,1
+"william",24,"male",2,"Living?","paper","n",0.997591199353337,0
+"william",24,"male",2,"Living?","zebra","y",0.791983000934124,1
+"william",24,"male",1,"Includes 'A'?","book","n",0.499256398528814,0
+"william",24,"male",2,"Living?","koala","y",0.609446000307798,1
+"william",24,"male",2,"Living?","iguana","y",0.83554570004344,1
+"william",24,"male",2,"Living?","sponge","n",0.597213599830866,1
+"william",24,"male",2,"Living?","spider","y",0.520504500716925,1
+"william",24,"male",2,"Living?","pine","y",0.93383969925344,1
+"william",24,"male",2,"Living?","lion","y",0.57122790068388,0
+"william",24,"male",1,"Includes 'A'?","flint","n",0.575301300734282,1
+"william",24,"male",1,"Includes 'A'?","fork","n",0.826790699735284,1
+"william",24,"male",2,"Living?","scaffold","n",0.796679001301527,1
+"william",24,"male",2,"Living?","slug","y",0.71962740086019,1
+"william",24,"male",1,"Includes 'A'?","canary","y",0.725038299337029,1
+"william",24,"male",2,"Living?","mirror","n",0.667277600616217,1
+"william",24,"male",2,"Living?","shoe","n",0.610570000484586,1
+"william",24,"male",1,"Includes 'A'?","broom","n",1.07749290019274,1
+"william",24,"male",2,"Living?","wallet","n",0.701376501470804,0
+"william",24,"male",2,"Living?","parrot","y",0.547801200300455,1
+"william",24,"male",1,"Includes 'A'?","canal","y",0.568167300894856,1
+"william",24,"male",1,"Includes 'A'?","ferret","n",0.628158798441291,0
+"william",24,"male",2,"Living?","urn","n",0.677337599918246,1
+"william",24,"male",1,"Includes 'A'?","flashlight","n",0.613565599545836,0
+"william",24,"male",1,"Includes 'A'?","bolt","n",1.55215029977262,1
+"william",24,"male",1,"Includes 'A'?","fox","y",0.636440901085734,1
+"william",24,"male",1,"Includes 'A'?","fawn","y",0.645544100552797,1
+"william",24,"male",1,"Includes 'A'?","belt","n",0.758494898676872,0
+"william",24,"male",1,"Includes 'A'?","crow","n",0.571180900558829,1
+"william",24,"male",1,"Includes 'A'?","crab","y",0.702868601307273,1
+"william",24,"male",2,"Living?","turtle","y",0.580685200169683,1
+"william",24,"male",2,"Living?","jaguar","y",0.592691401019692,1
+"william",24,"male",1,"Includes 'A'?","horse","n",0.723567198961973,1
+"william",24,"male",1,"Includes 'A'?","cable","y",0.713341601192951,1
+"william",24,"male",2,"Living?","pen","n",0.991801800206304,0
+"william",24,"male",1,"Includes 'A'?","weasel","y",0.810988299548626,1
+"william",24,"male",2,"Living?","caravan","y",0.661503300070763,1
+"william",24,"male",2,"Living?","marble","n",1.03783280029893,1
+"william",24,"male",1,"Includes 'A'?","chipmunk","n",1.13502749986947,0
+"william",24,"male",1,"Includes 'A'?","alarm","y",0.692165499553084,1
+"william",24,"male",2,"Living?","panda","y",0.643222199752927,1
+"william",24,"male",2,"Living?","pillow","n",0.820480899885297,0
+"william",24,"male",1,"Includes 'A'?","cock","n",0.646249299868941,1
+"william",24,"male",1,"Includes 'A'?","camel","y",0.815307701006532,1
+"william",24,"male",1,"Includes 'A'?","bell","n",0.657090101391077,1
+"william",24,"male",1,"Includes 'A'?","plant","y",0.713659999892116,0
+"william",24,"male",2,"Living?","otter","y",0.831593399867415,1
+"william",24,"male",1,"Includes 'A'?","armadillo","y",0.665128000080585,1
+"william",24,"male",2,"Living?","salmon","y",0.776680901646614,0
+"william",24,"male",1,"Includes 'A'?","jellyfish","n",1.10855850018561,1
+"william",24,"male",2,"Living?","magpie","y",0.91500279866159,1
+"william",24,"male",1,"Includes 'A'?","fossil","n",1.07263850048184,1
+"william",24,"male",1,"Includes 'A'?","heron","n",0.87253800034523,1
+"william",24,"male",2,"Living?","stamp","n",0.832395499572158,1
+"william",24,"male",1,"Includes 'A'?","crater","y",0.985634999349713,1
+"william",24,"male",2,"Living?","rattlesnake","y",1.30069790035486,1
+"william",24,"male",2,"Living?","shelf","n",0.587152300402522,1
+"william",24,"male",2,"Living?","pier","n",1.16624690033495,1
+"william",24,"male",1,"Includes 'A'?","cassette","y",0.778216699138284,0
+"william",24,"male",2,"Living?","kitchen","n",0.99753500148654,1
+"william",24,"male",1,"Includes 'A'?","elk","n",0.888093400746584,1
+"william",24,"male",2,"Living?","shark","y",0.519443700090051,1
+"william",24,"male",2,"Living?","mole","y",0.573417900130153,1
+"william",24,"male",2,"Living?","llama","y",0.784694200381637,1
+"william",24,"male",2,"Living?","passport","n",0.756035700440407,0
+"william",24,"male",2,"Living?","owl","y",0.656376099213958,0
+"william",24,"male",1,"Includes 'A'?","coyote","n",0.784835198894143,1
+"william",24,"male",1,"Includes 'A'?","hook","n",0.82010000012815,1
+"william",24,"male",1,"Includes 'A'?","flower","n",0.701976900920272,0
+"william",24,"male",2,"Living?","newt","y",2.18820099905133,1
+"william",24,"male",1,"Includes 'A'?","emu","n",0.991234499961138,1
+"william",24,"male",1,"Includes 'A'?","alpaca","y",0.698087800294161,0
+"william",24,"male",2,"Living?","vase","n",0.952872099354863,1
+"william",24,"male",2,"Living?","tool","n",0.653250699862838,0
+"william",24,"male",1,"Includes 'A'?","alligator","y",0.606006499379873,0
+"william",24,"male",1,"Includes 'A'?","dome","n",0.480203200131655,1
+"william",24,"male",1,"Includes 'A'?","disc","n",0.575941499322653,0
+"william",24,"male",1,"Includes 'A'?","beetle","n",0.563846999779344,1
+"william",24,"male",2,"Living?","kangaroo","y",0.768292799592018,1
+"william",24,"male",2,"Living?","rug","n",0.619980599731207,0
+"william",24,"male",1,"Includes 'A'?","grasshopper","y",0.72577840089798,1
+"william",24,"male",1,"Includes 'A'?","comb","n",0.859201600775123,0
+"william",24,"male",1,"Includes 'A'?","bamboo","y",0.876129399985075,1
+"william",24,"male",2,"Living?","satchel","n",0.675837898626924,1
+"william",24,"male",2,"Living?","mesh","n",0.563682800158858,1
+"william",24,"male",2,"Living?","calendar","n",0.872075900435448,1
+"william",24,"male",2,"Living?","mantis","y",0.687934000045061,1
+"william",24,"male",2,"Living?","swan","y",0.727061098441482,1
+"william",24,"male",1,"Includes 'A'?","coral","y",0.644927699118853,1
+"william",24,"male",2,"Living?","panther","y",0.621967699378729,1
+"william",24,"male",1,"Includes 'A'?","flame","y",0.775725699961185,0
+"william",24,"male",2,"Living?","mouse","y",0.640748200938106,0
+"william",24,"male",2,"Living?","marlin","y",0.785911899060011,1
+"william",24,"male",1,"Includes 'A'?","duck","n",0.645263900980353,1
+"william",24,"male",2,"Living?","sand","n",0.702199701219797,0
+"william",24,"male",1,"Includes 'A'?","cactus","y",0.620596401393414,0
+"william",24,"male",2,"Living?","tent","n",0.550500700250268,0
+"william",24,"male",1,"Includes 'A'?","avocado","y",0.538935698568821,1
+"william",24,"male",2,"Living?","gate","y",0.647991498932242,1
+"william",24,"male",1,"Includes 'A'?","fish","n",0.528760300949216,1
+"william",24,"male",1,"Includes 'A'?","fern","n",0.702124601230025,1
+"william",24,"male",1,"Includes 'A'?","baboon","y",0.796544199809432,1
+"william",24,"male",2,"Living?","ledge","n",0.59132120013237,1
+"william",24,"male",1,"Includes 'A'?","carriage","y",0.706338899210095,1
+"william",24,"male",2,"Living?","wasp","y",0.593312300741673,1
+"william",24,"male",1,"Includes 'A'?","gem","n",0.628323899582028,1
+"william",24,"male",1,"Includes 'A'?","brush","n",0.526371799409389,0
+"william",24,"male",2,"Living?","net","n",0.96424419991672,1
+"william",24,"male",1,"Includes 'A'?","cobra","y",0.688200298696756,0
+"william",24,"male",1,"Includes 'A'?","dog","n",0.775644700974226,1
+"william",24,"male",1,"Includes 'A'?","dragonfly","y",0.77939079888165,1
+"william",24,"male",1,"Includes 'A'?","barrel","y",0.734772700816393,1
+"william",24,"male",1,"Includes 'A'?","dove","n",0.57226949930191,0
+"william",24,"male",1,"Includes 'A'?","fuse","n",0.592083100229502,0
+"william",24,"male",1,"Includes 'A'?","fence","n",0.547578198835254,0
+"william",24,"male",2,"Living?","manta","y",1.08047709986567,1
+"william",24,"male",2,"Living?","snipe","y",1.80007429979742,1
+"william",24,"male",2,"Living?","pigeon","y",0.674222799018025,1
+"william",24,"male",2,"Living?","maze","n",1.01819489896297,1
+"william",24,"male",1,"Includes 'A'?","frog","y",0.588151600211859,0
+"william",24,"male",2,"Living?","insect","y",0.63090549968183,0
+"william",24,"male",2,"Living?","buck","y",0.896655300632119,1
+"william",24,"male",2,"Living?","orb","n",0.671521099284291,0
+"william",24,"male",1,"Includes 'A'?","cargo","y",0.79154740087688,0
+"william",24,"male",1,"Includes 'A'?","basket","y",0.762464700266719,0
+"william",24,"male",1,"Includes 'A'?","badge","y",0.910859599709511,1
+"william",24,"male",1,"Includes 'A'?","albatross","y",0.589455999433994,1
+"william",24,"male",2,"Living?","starfish","y",0.664499500766397,1
+"william",24,"male",1,"Includes 'A'?","crayfish","y",0.560351800173521,1
+"william",24,"male",2,"Living?","monkey","y",1.02059790119529,0
+"william",24,"male",1,"Includes 'A'?","box","n",0.622480100020766,1
+"william",24,"male",1,"Includes 'A'?","hummingbird","n",0.896669998764992,0
+"william",24,"male",2,"Living?","trough","n",0.919483799487352,1
+"william",24,"male",1,"Includes 'A'?","banana","y",0.581076599657536,1
+"william",24,"male",1,"Includes 'A'?","gnu","n",0.608209500089288,1
+"william",24,"male",2,"Living?","lava","n",1.12267240136862,0
+"william",24,"male",1,"Includes 'A'?","door","n",0.656445499509573,0
+"william",24,"male",1,"Includes 'A'?","diamond","y",0.648901799693704,1
+"william",24,"male",1,"Includes 'A'?","dingo","n",0.60920650139451,0
+"william",24,"male",1,"Includes 'A'?","camera","y",0.635752700269222,1
+"william",24,"male",2,"Living?","furnace","n",0.700947899371386,1
+"william",24,"male",2,"Living?","flask","n",0.61145850084722,0
+"william",24,"male",2,"Living?","hammer","n",0.773735700175166,0
+"william",24,"male",2,"Living?","shard","n",0.689727298915386,1
+"william",24,"male",1,"Includes 'A'?","cheetah","y",0.976844899356365,1
+"william",24,"male",2,"Living?","lynx","y",0.6679114010185,1
+"william",24,"male",2,"Living?","mop","n",0.692418599501252,1
+"william",24,"male",2,"Living?","guitar","n",0.947461500763893,0
+"william",24,"male",1,"Includes 'A'?","rat","y",0.528620399534702,0
+"william",24,"male",2,"Living?","hawk","y",0.566366100683808,1
+"william",24,"male",1,"Includes 'A'?","flamingo","y",0.578201400116086,1
+"william",24,"male",2,"Living?","mug","n",0.686088198795915,1
+"william",24,"male",2,"Living?","galaxy","n",1.02875800058246,1
+"william",24,"male",2,"Living?","knife","n",0.654871100559831,0
+"william",24,"male",1,"Includes 'A'?","bicycle","n",0.575409499928355,1
+"william",24,"male",1,"Includes 'A'?","catfish","y",0.507202601060271,1
+"william",24,"male",2,"Living?","pufferfish","y",0.585509099066257,1
+"william",24,"male",1,"Includes 'A'?","chain","y",0.484668299555779,0
+"william",24,"male",2,"Living?","octopus","y",0.739848300814629,0
+"william",24,"male",2,"Living?","tapir","n",0.601198898628354,1
+"william",24,"male",1,"Includes 'A'?","bison","n",1.01938680000603,1
+"william",24,"male",1,"Includes 'A'?","fish","n",0.637145198881626,1
